@@ -5,6 +5,9 @@
  */
 package opkcalculator;
 
+import gauss.Sistemas;
+import java.util.Scanner;
+
 /**
  *
  * @author 5663296
