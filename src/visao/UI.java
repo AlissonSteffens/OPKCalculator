@@ -7,6 +7,7 @@ package visao;
 
 import com.alee.laf.WebLookAndFeel;
 import gauss.Sistemas;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,6 +44,7 @@ public class UI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         areaMatrizEscalonada = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -52,6 +54,8 @@ public class UI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Omega Power & Knuckles Calculator");
+        setLocationByPlatform(true);
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         areaMatriz.setColumns(20);
         areaMatriz.setRows(5);
@@ -59,7 +63,6 @@ public class UI extends javax.swing.JFrame {
 
         jLabel1.setText("Digite o tamanho e a Matriz Ampliada");
 
-        calcularGauss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/knuckles.png"))); // NOI18N
         calcularGauss.setText("Calcular");
         calcularGauss.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,13 @@ public class UI extends javax.swing.JFrame {
 
         jLabel2.setText("Matriz ampliada escalonada e resposta");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/interrogation.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -81,14 +91,16 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(calcularGauss))
-                    .addComponent(jScrollPane3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
+                        .addComponent(calcularGauss)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -100,7 +112,9 @@ public class UI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(calcularGauss)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(calcularGauss)
+                        .addComponent(jButton1))
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +157,7 @@ public class UI extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedGauss, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+            .addComponent(jTabbedGauss)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,10 +181,37 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calcularGaussActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularGaussActionPerformed
-        
         String matriz = areaMatriz.getText().toString();
-        areaMatrizEscalonada.setText(Sistemas.calcular(matriz));
+        if(!matriz.isEmpty())
+        {
+            if(!matriz.contains("<")){
+                    areaMatrizEscalonada.setText(Sistemas.calcular(matriz));
+            }
+            else
+            {
+                erroComentario();
+            }
+        }
+        else
+        {
+            erroVazio();
+        }
     }//GEN-LAST:event_calcularGaussActionPerformed
+    
+    private void erroComentario()
+    {
+        JOptionPane.showMessageDialog(this, "Apaga o Comentário Jovin!!");
+    }
+    
+    private void erroVazio()
+    {
+        JOptionPane.showMessageDialog(this, "Sem nada não dá de calcular né...");
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String ajuda = "<Inicie pelo número de variáveis>\n2\n<Em seguida adicione as matrizes ampliadas>\n1 2 3\n2 3 5\n<Remova os comentários para poder calcular>";
+        areaMatriz.setText(ajuda);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +241,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTextArea areaMatriz;
     private javax.swing.JTextArea areaMatrizEscalonada;
     private javax.swing.JButton calcularGauss;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
