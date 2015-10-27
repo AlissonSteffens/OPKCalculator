@@ -5,7 +5,7 @@
  */
 package opkcalculator;
 
-import gauss.Sistemas;
+import gauss.Sistema;
 import java.util.Scanner;
 
 /**

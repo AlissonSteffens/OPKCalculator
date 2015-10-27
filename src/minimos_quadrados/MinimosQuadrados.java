@@ -1,41 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package minimos_quadrados;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
-/**
- *
- * @author 5663296
- */
+
+import java.util.*;
+import java.util.Map.Entry;
+
+
 public class MinimosQuadrados {
+        
+    private double somaX = 0;
+    private double somaY = 0;
+    private double somaXY = 0;
+    private double somaX2 = 0;
+    private double somaY2 = 0;
+    private double m;
     
-    private MinimosQuadrados(int grau, double[][] matrix) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    public static String calcular(String in) {
-            Scanner sc = new Scanner(in);
-            try{
-                int grau = sc.nextInt();
-                int numberOfPoints = sc.nextInt();
-                double matrix[][] = new double[2][numberOfPoints+1];
-                
-                for (int i = 0; i <= 2; i++){
-                    for (int j = 0; j < numberOfPoints; j++) {
-                        matrix[i][j] = sc.nextDouble();
-                    }
-                }
-                MinimosQuadrados m=new MinimosQuadrados(grau, matrix);
-                return m.toString();
-            } catch (InputMismatchException ex) {
-                    String msg = "Você digitou um caractere errado\nTente de novo.";
-                    return msg;
+    public String calculaMinQuadrado(Map<Double, Double> xyMap) {
+            m = (double)xyMap.size();
+
+            // Somatorias
+            for (Entry<Double, Double> entry : xyMap.entrySet()) {
+                    double x = entry.getKey().doubleValue();
+                    double y = entry.getValue().doubleValue();
+                    somaX += x;
+                    somaY += y;
+                    somaXY += (x * y);
+                    somaX2 += (x * x);
+                    somaY2 += (y * y);
             }
-	}
+            double a = (somaX * somaXY - somaX2 * somaY) / (somaX * somaX - m * somaX2);
+            double b = (somaX * somaY - m * somaXY) / (somaX * somaX - m * somaX2);
+            
+            String resposta = "";
+            resposta+="Soma_X = "+somaX;
+            resposta+="\nSoma_Y = "+somaY;
+            resposta+="\nSoma_X2 = "+somaX2;
+            resposta+="\nSoma_Y2 = "+somaY2;
+            resposta+="\nSoma_XY = "+somaXY;
+            resposta+="\nA = "+a;
+            resposta+="\nB = "+b;
+            resposta+="\nEquação = "+b+"x + "+a;
+            
+            return resposta;
+    }
 }

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * Esta classe escalona o sistema e depois resolve por
  * substituicao retroativa.
  */
-public class Sistemas {
+public class Sistema {
 	
 	//variaveis iniciais do objeto
 	//matriz a ser escalonada
@@ -28,44 +28,49 @@ public class Sistemas {
 	 *  e executa o processamento do sistema.
 	 * @param matriz
 	 */
-	Sistemas(double[][] matriz){
+	public Sistema(){
+	}
+        
+        public String calcular(double[][] matriz){
 		this.matrizExpandida = matriz.clone();
 		escalonaUmSistema();
 		divideMatrizEscalonada();
 		try{
 		resolveSistEscalonado();
+                return resposta();
 		}
 		catch (IllegalArgumentException erro) {
 			JOptionPane.showMessageDialog(null, erro.getMessage(), "Gauss",JOptionPane.ERROR_MESSAGE);
 			//System.exit(1); //programa devolve mensagem de erro para o sistema operacional.
 		}
+                return "Algum erro Ocorreu, tente novamente";
 	}
-	
-	@Override
-	public String toString() {
-		int linhas = this.matrizExpandida.length;
-		int colunas = this.matrizExpandida[0].length;
-		String matrizEscalonada = "";
-		String vetorSolucao = "";
-		
-		//Escreve a matriz expandida do sistema no formato decimal definido em df.
-		for (int i = 0; i < linhas; i++) {
-			for (int j = 0; j < colunas; j++) {
-				if ( !(j == colunas-1) )
-					matrizEscalonada += df.format(this.matrizExpandida[i][j]) + "   ";	
-				else matrizEscalonada += "| "+df.format(this.matrizExpandida[i][j]);
-			}
-			matrizEscalonada += "\n";
-		}
-		//Escreve o vetor solucao do sistema no formato decimal definido em df.
-		for (int i = 0; i < this.vetorSolucao.length; i++) {
-			if ( !(i == this.vetorSolucao.length) ) vetorSolucao +=df.format(this.vetorSolucao[i])+"   ";
-			else vetorSolucao +=df.format(this.vetorSolucao[i]);
-		}
-		
-		return "Matriz escalonada:\n"
-				+ matrizEscalonada + "vetorSolucao= ["
-				+ vetorSolucao+"]";
+        	
+	private String resposta() {
+            int linhas = this.matrizExpandida.length;
+            int colunas = this.matrizExpandida[0].length;
+            String matrizEscalonada = "";
+            String vetorSolucao = "";
+
+            //Escreve a matriz expandida do sistema no formato decimal definido em df.
+            for (int i = 0; i < linhas; i++) {
+                    for (int j = 0; j < colunas; j++) {
+                            if ( !(j == colunas-1) )
+                                    matrizEscalonada += df.format(this.matrizExpandida[i][j]) + "   ";	
+                            else matrizEscalonada += "| "+df.format(this.matrizExpandida[i][j]);
+                    }
+                    matrizEscalonada += "\n";
+            }
+            //Escreve o vetor solucao do sistema no formato decimal definido em df.
+            for (int i = 0; i < this.vetorSolucao.length; i++) {
+                    if ( !(i == this.vetorSolucao.length) ) vetorSolucao +=df.format(this.vetorSolucao[i])+"\t";
+                    else vetorSolucao +=df.format(this.vetorSolucao[i]);
+            }
+            
+            vetorSolucao = vetorSolucao.substring(0, vetorSolucao.length()-1);
+            return "Matriz escalonada:\n"
+                            + matrizEscalonada + "vetorSolucao= ["
+                            + vetorSolucao+"]";
 	}
 	
 	/**
@@ -149,25 +154,5 @@ public class Sistemas {
 			i--;
 		}
 		return vetorSolucao;
-	}
-        
-        public static String calcular(String in) {
-            Scanner sc = new Scanner(in);
-            try{
-                    int numberOfEquations = sc.nextInt();
-                    double matrix[][] = new double[numberOfEquations][numberOfEquations+1];
-                    int j = 0;
-                    do  {
-                            for (int i = 0; i <= numberOfEquations; i++){
-                                    matrix[j][i] = sc.nextDouble();
-                            }
-                            j++;
-                    } while (sc.hasNextLine());
-                    Sistemas s=new Sistemas(matrix);
-                    return s.toString();
-            } catch (InputMismatchException ex) {
-                    String msg = "Você digitou um caractere errado\nTente de novo.";
-                    return msg;
-            }
 	}
 }
