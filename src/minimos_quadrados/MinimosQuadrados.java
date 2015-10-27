@@ -2,45 +2,94 @@ package minimos_quadrados;
 
 
 
+import gauss.Sistema;
 import java.util.*;
-import java.util.Map.Entry;
 
 
 public class MinimosQuadrados {
         
-    private double somaX = 0;
-    private double somaY = 0;
-    private double somaXY = 0;
-    private double somaX2 = 0;
-    private double somaY2 = 0;
-    private double m;
-    
-    public String calculaMinQuadrado(Map<Double, Double> xyMap) {
-            m = (double)xyMap.size();
+    private List<Point> points;
+    private int grau;
+    private Double[] as;
+    List<Double[]> vectors;
 
-            // Somatorias
-            for (Entry<Double, Double> entry : xyMap.entrySet()) {
-                    double x = entry.getKey().doubleValue();
-                    double y = entry.getValue().doubleValue();
-                    somaX += x;
-                    somaY += y;
-                    somaXY += (x * y);
-                    somaX2 += (x * x);
-                    somaY2 += (y * y);
+    public MinimosQuadrados(List<Point> points, int grau, String tipoAproximacao) {
+        this.points = points;
+        this.grau=grau;
+        this.vectors = new ArrayList<>();
+        if(tipoAproximacao.equals("Polinomial"))
+        {
+           calcularPolinomial(); 
+        }
+        else if(tipoAproximacao.equals("Geométrica"))
+        {
+            calcularGeometrica();
+        }
+        
+    }
+
+    private void calcularPolinomial()
+    {
+        for (int i = 0; i < this.grau+1; i++) {
+            Double[] ui = new Double[points.size()];
+            for (int j = 0; j < points.size(); j++) {
+                ui[j]=Math.pow(points.get(j).getX(),i);
             }
-            double a = (somaX * somaXY - somaX2 * somaY) / (somaX * somaX - m * somaX2);
-            double b = (somaX * somaY - m * somaXY) / (somaX * somaX - m * somaX2);
-            
-            String resposta = "";
-            resposta+="Soma_X = "+somaX;
-            resposta+="\nSoma_Y = "+somaY;
-            resposta+="\nSoma_X2 = "+somaX2;
-            resposta+="\nSoma_Y2 = "+somaY2;
-            resposta+="\nSoma_XY = "+somaXY;
-            resposta+="\nA = "+a;
-            resposta+="\nB = "+b;
-            resposta+="\nEquação = "+b+"x + "+a;
-            
-            return resposta;
+            vectors.add(ui);
+        }
+        calcular();
+    }
+    
+    private void calcularGeometrica()
+    {
+        Double[] u0 = new Double[points.size()];
+        for (int j = 0; j < points.size(); j++) {
+            u0[j]=1.0;
+        }
+        vectors.add(u0);
+        for (int i = 1; i < this.grau+1; i++) {
+            Double[] ui = new Double[points.size()];
+            for (int j = 0; j < points.size(); j++) {
+                ui[j]=Math.log(points.get(j).getX());
+            }
+            vectors.add(ui);
+        }
+        calcular();
+    }
+    
+    private void calcular() {
+        
+        
+        Double[] vectorY = new Double[points.size()];
+        for (int i = 0; i < points.size(); i++) {
+            vectorY[i]=points.get(i).getY();
+        }
+        Double[][] ampliedMatrix = new Double[this.grau+1][this.grau+2];
+        
+        for (int i = 0; i < this.grau+1; i++) {
+            for (int j = 0; j < this.grau+1; j++) {
+                ampliedMatrix[i][j]=addVectors(vectors.get(i), vectors.get(j));
+            }
+        }
+        
+        for (int i = 0; i < this.grau+1; i++) {
+            ampliedMatrix[i][this.grau+1]=addVectors(vectors.get(i), vectorY);
+        }
+        
+        Sistema sistema = new Sistema(ampliedMatrix);
+        this.as = sistema.getVetorSolucao();
+    }
+    
+    private Double addVectors(Double[] vectA, Double[] vectB){
+        Double sum=0.0;
+        for (int i = 0; i < vectA.length; i++) {
+            sum+=vectA[i]*vectB[i];
+        }
+        return sum;
+    }
+    
+    public Double[] getList()
+    {
+        return as;
     }
 }

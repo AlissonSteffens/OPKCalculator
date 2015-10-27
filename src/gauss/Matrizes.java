@@ -6,9 +6,9 @@ package gauss;
  */
 public class Matrizes {
 
-	private double matriz[][]; //matriz aumentada do sistema
+	private Double matriz[][]; //matriz aumentada do sistema
 
-	Matrizes(double matriz[][]) {
+	Matrizes(Double matriz[][]) {
 		this.matriz = matriz.clone();
 		//this.matrizOriginal = matriz.clone();
 	}
@@ -19,7 +19,7 @@ public class Matrizes {
 	 * @param num: Eh o numero que multiplica a linha
 	 * @return A matriz com a linha multiplicada.
 	 */
-	public double[][] multiplicaLinhaPorEscalar(int linha, double num) {
+	public Double[][] multiplicaLinhaPorEscalar(int linha, Double num) {
 		int numColunas = matriz[0].length;
 		for (int colunaAtual=0; colunaAtual < numColunas; colunaAtual++) {
 			matriz[linha][colunaAtual] = num * matriz[linha][colunaAtual];
@@ -33,18 +33,18 @@ public class Matrizes {
 	 * @param linha2
 	 * @return
 	 */
-	public double [][] somaDuasLinhas(int linha1, int linha2) {
+	public Double [][] somaDuasLinhas(int linha1, int linha2) {
 		
 		int numColunas = matriz[0].length;
 		for (int colunaAtual=0; colunaAtual < numColunas; colunaAtual++) {
 			matriz[linha2][colunaAtual] = matriz[linha2][colunaAtual] + matriz[linha1][colunaAtual];
-			if ( ehZero( matriz[linha2][colunaAtual] ))
-				matriz[linha2][colunaAtual] = (double)0;
+			if ( isZero( matriz[linha2][colunaAtual] ))
+				matriz[linha2][colunaAtual] = 0.0;
 		}
 		return matriz;
 	}
 
-	private boolean ehZero(double num) {
+	private boolean isZero(Double num) {
 		if (java.lang.Math.abs(num) < 1E-6)
 			return true;
 		return false;
@@ -52,11 +52,11 @@ public class Matrizes {
 /**
  * Este metodo recebe um vetor e soma ele na linhaAtual da matriz da classe.
  */
-	public double[][] somaDuasLinhas(double[] linhaPivo, int linhaAtual) {
+	public Double[][] somaDuasLinhas(Double[] linhaPivo, int linhaAtual) {
 		for (int i = 0; i < matriz[0].length; i++) {
 			matriz[linhaAtual][i] += linhaPivo[i];
-			if ( ehZero( matriz[linhaAtual][i] ))
-				matriz[linhaAtual][i] = (double)0;
+			if ( isZero( matriz[linhaAtual][i] ))
+				matriz[linhaAtual][i] = 0.0;
 		}
 		return matriz;
 	}

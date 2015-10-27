@@ -60,6 +60,12 @@ public class UI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         equacaoLinearizada = new javax.swing.JTextArea();
+        grauLabel = new javax.swing.JLabel();
+        grauPolinomio = new javax.swing.JTextField();
+        equacaoAproximada = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tipoFunacaoAproximacao = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
 
         jTextArea1.setColumns(20);
@@ -97,7 +103,7 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Entre com a Matriz, separando as posições com espaços");
+        jLabel3.setText("Entre com a Matriz Ampliada, separando as posições com espaços");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,10 +143,13 @@ public class UI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(calcularGauss)
-                            .addComponent(jLabel2)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(calcularGauss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
@@ -151,9 +160,9 @@ public class UI extends javax.swing.JFrame {
 
         jTabbedGauss.addTab("Metodo de Gauss", jPanel2);
 
-        jLabel4.setText("Digite os X dos Pontos (Separados por espaços)");
+        jLabel4.setText("X dos Pontos");
 
-        jLabel5.setText("Digite os Y dos Pontos (Separados por espaços)");
+        jLabel5.setText("Y dos Pontos");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/interrogation.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -169,31 +178,58 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
+        equacaoLinearizada.setEditable(false);
         equacaoLinearizada.setColumns(20);
         equacaoLinearizada.setRows(5);
         jScrollPane4.setViewportView(equacaoLinearizada);
+
+        grauLabel.setText(" Grau do Polinômio");
+
+        equacaoAproximada.setEditable(false);
+
+        jLabel7.setText("Função Aproximada");
+
+        jLabel8.setText("Tipo de Funçao de Aproximação ");
+
+        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Exponencial", "Geométrica", "Hiperbólica" }));
+        tipoFunacaoAproximacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoFunacaoAproximacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(xzesMMQ, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ynsMMQ))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tipoFunacaoAproximacao, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(grauLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(equacaoAproximada, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ynsMMQ)
+                            .addComponent(xzesMMQ))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -208,11 +244,21 @@ public class UI extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(ynsMMQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tipoFunacaoAproximacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(grauLabel)
+                            .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(equacaoAproximada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -263,7 +309,7 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String ajuda = "<Adicione as matrizes ampliadas>\n1 2 3\n2 3 5\n<Remova os comentários para poder calcular>";
+        String ajuda = "1 2 3\n2 3 5";
         areaMatriz.setText(ajuda);
         tamanhoMatrizAmpliada.setText("2");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -271,58 +317,57 @@ public class UI extends javax.swing.JFrame {
     private void calcularGaussActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularGaussActionPerformed
         String matriz = areaMatriz.getText().toString();
         String tamanho = tamanhoMatrizAmpliada.getText().toString();
-        if(!matriz.isEmpty())
-        {
-            if(!matriz.contains("<")){
-
-                Scanner sc = new Scanner(tamanho);
-                int numberOfEquations = sc.nextInt();
-                sc = new Scanner(matriz);
-                double matrix[][] = new double[numberOfEquations][numberOfEquations+1];
-                int j = 0;
-                do  {
-                    for (int i = 0; i <= numberOfEquations; i++){
-                        matrix[j][i] = sc.nextDouble();
-                    }
-                    j++;
-                } while (sc.hasNextLine());
-
-                Sistema sistema = new Sistema();
-                areaMatrizEscalonada.setText(sistema.calcular(matrix));
-            }
-            else
-            {
-                erroComentario();
-            }
-        }
-        else
-        {
-            erroVazio();
-        }
+        
+        Sistema sistema = new Sistema(ViewAdapter.stringToMatrix(tamanho, matriz));
+        areaMatrizEscalonada.setText(ViewAdapter.matrixToString(sistema.getMatriz(), sistema.getVetorSolucao()));
+            
     }//GEN-LAST:event_calcularGaussActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        xzesMMQ.setText("-2 -1 0 1 2");
-        ynsMMQ.setText("0 0 -1 0 7");
+        String tipoAproximacao = tipoFunacaoAproximacao.getSelectedItem().toString();
+        if(tipoAproximacao.equals("Polinomial"))
+        {
+            xzesMMQ.setText("-2 -1 0 1 2");
+            ynsMMQ.setText("0 0 -1 0 7");
+            grauPolinomio.setText("1");
+        }
+        else if(tipoAproximacao.equals("Geométrica")){
+            xzesMMQ.setText("0,1 0,5 1 2 3");
+            ynsMMQ.setText("0,005 0,5 4 30 110");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
         String stringXs=xzesMMQ.getText().toString();
         String stringYs=ynsMMQ.getText().toString();
-        
-        Map<Double,Double> map=new HashMap<>();
-        Scanner sx = new Scanner(stringXs);
-        Scanner sy = new Scanner(stringYs);
-        do  {
-            Double tempx = sx.nextDouble();
-            Double tempy = sy.nextDouble();
-            map.put(tempx, tempy);
-        } while (sx.hasNext());
-        MinimosQuadrados minimosQuadrados = new MinimosQuadrados();
-        
-        equacaoLinearizada.setText(minimosQuadrados.calculaMinQuadrado(map));
+        String grau;
+        if(grauPolinomio.isVisible())
+        {
+            grau=grauPolinomio.getText().toString();
+        }
+        else
+        {
+            grau="1";
+        }
+        String tipoAproximacao = tipoFunacaoAproximacao.getSelectedItem().toString();
+        MinimosQuadrados minimosQuadrados = new MinimosQuadrados(ViewAdapter.stringsToPoints(stringXs, stringYs),Integer.parseInt(grau), tipoAproximacao);
+        equacaoLinearizada.setText(ViewAdapter.doubleVectorToString(minimosQuadrados.getList()));
+        equacaoAproximada.setText(ViewAdapter.doubleVectorEquation(minimosQuadrados.getList()));
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tipoFunacaoAproximacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoFunacaoAproximacaoActionPerformed
+        if(!tipoFunacaoAproximacao.getSelectedItem().toString().equals("Polinomial"))
+        {
+            grauLabel.setVisible(false);
+            grauPolinomio.setVisible(false);
+        }
+        else
+        {
+            grauLabel.setVisible(true);
+            grauPolinomio.setVisible(true);
+        }
+    }//GEN-LAST:event_tipoFunacaoAproximacaoActionPerformed
     
     private void erroComentario()
     {
@@ -362,7 +407,10 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTextArea areaMatriz;
     private javax.swing.JTextArea areaMatrizEscalonada;
     private javax.swing.JButton calcularGauss;
+    private javax.swing.JTextField equacaoAproximada;
     private javax.swing.JTextArea equacaoLinearizada;
+    private javax.swing.JLabel grauLabel;
+    private javax.swing.JTextField grauPolinomio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -371,6 +419,8 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -382,6 +432,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedGauss;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField tamanhoMatrizAmpliada;
+    private javax.swing.JComboBox tipoFunacaoAproximacao;
     private javax.swing.JTextField xzesMMQ;
     private javax.swing.JTextField ynsMMQ;
     // End of variables declaration//GEN-END:variables
