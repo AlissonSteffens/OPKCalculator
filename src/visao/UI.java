@@ -7,6 +7,7 @@ package visao;
 
 import com.alee.laf.WebLookAndFeel;
 import gauss.Sistema;
+import interpolação.Interpolacao;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -67,6 +68,17 @@ public class UI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tipoFunacaoAproximacao = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        xzesInterpolacao = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        yonsInterpolacao = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        tipoFuncaoInterpolacao = new javax.swing.JComboBox();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        areaInterpolacao = new javax.swing.JTextArea();
+        funcaoInterpolacao = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -75,7 +87,6 @@ public class UI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Omega Power & Knuckles Calculator");
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         areaMatriz.setColumns(20);
         areaMatriz.setRows(5);
@@ -116,7 +127,7 @@ public class UI extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
                         .addComponent(calcularGauss)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -142,7 +153,7 @@ public class UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
@@ -191,7 +202,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel8.setText("Tipo de Funçao de Aproximação ");
 
-        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Exponencial", "Geométrica", "Hiperbólica", "ae^bx", "Interpolação Polinomial", "Interpolação SPline" }));
+        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Exponencial", "Geométrica", "Hiperbólica", "ae^bx" }));
         tipoFunacaoAproximacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoFunacaoAproximacaoActionPerformed(evt);
@@ -214,7 +225,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(grauLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -253,7 +264,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,18 +274,85 @@ public class UI extends javax.swing.JFrame {
 
         jTabbedGauss.addTab("Metodos dos Minimos Quadrados", jPanel3);
 
+        jLabel6.setText("X dos pontos");
+
+        jLabel9.setText("Y dos pontos");
+
+        jLabel10.setText("Tipo de Interpolação");
+
+        tipoFuncaoInterpolacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "SPline" }));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/interrogation.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Calcular");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        areaInterpolacao.setColumns(20);
+        areaInterpolacao.setRows(5);
+        jScrollPane5.setViewportView(areaInterpolacao);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xzesInterpolacao))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(yonsInterpolacao))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tipoFuncaoInterpolacao, 0, 453, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(funcaoInterpolacao))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(xzesInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(yonsInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tipoFuncaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4)
+                        .addComponent(jButton5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(funcaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jTabbedGauss.addTab("tab3", jPanel4);
+        jTabbedGauss.addTab("Interpolação", jPanel4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -334,10 +412,6 @@ public class UI extends javax.swing.JFrame {
             xzesMMQ.setText("0,1 0,5 1 2 3");
             ynsMMQ.setText("0,005 0,5 4 30 110");
         }
-        else if(tipoAproximacao.equals("Interpolação SPline")){
-            xzesMMQ.setText("1 3 5 10 12 15 18 20 30");
-            ynsMMQ.setText("2 4 6 20 2 24 88 38 1");
-        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -371,6 +445,23 @@ public class UI extends javax.swing.JFrame {
             grauPolinomio.setVisible(true);
         }
     }//GEN-LAST:event_tipoFunacaoAproximacaoActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String stringXs=xzesInterpolacao.getText().toString();
+        String stringYs=yonsInterpolacao.getText().toString();
+        String tipodeInterpolacao = tipoFuncaoInterpolacao.getSelectedItem().toString();
+        Interpolacao interpolacao= new Interpolacao(ViewAdapter.stringsToPoints(stringXs, stringYs), tipodeInterpolacao);
+        areaInterpolacao.setText(ViewAdapter.doubleVectorToString(interpolacao.getList()));
+        funcaoInterpolacao.setText(ViewAdapter.doubleVectorEquation(interpolacao.getList()));
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String tipoInterpolacao = tipoFuncaoInterpolacao.getSelectedItem().toString();
+        if(tipoInterpolacao.equals("SPline")){
+            xzesInterpolacao.setText("1 3 5 10 12 15 18 20 30");
+            yonsInterpolacao.setText("2 4 6 20 2 24 88 38 1");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
     
     private void erroComentario()
     {
@@ -407,23 +498,30 @@ public class UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaInterpolacao;
     private javax.swing.JTextArea areaMatriz;
     private javax.swing.JTextArea areaMatrizEscalonada;
     private javax.swing.JButton calcularGauss;
     private javax.swing.JTextField equacaoAproximada;
     private javax.swing.JTextArea equacaoLinearizada;
+    private javax.swing.JTextField funcaoInterpolacao;
     private javax.swing.JLabel grauLabel;
     private javax.swing.JTextField grauPolinomio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -432,11 +530,15 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedGauss;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField tamanhoMatrizAmpliada;
     private javax.swing.JComboBox tipoFunacaoAproximacao;
+    private javax.swing.JComboBox tipoFuncaoInterpolacao;
+    private javax.swing.JTextField xzesInterpolacao;
     private javax.swing.JTextField xzesMMQ;
     private javax.swing.JTextField ynsMMQ;
+    private javax.swing.JTextField yonsInterpolacao;
     // End of variables declaration//GEN-END:variables
 }
