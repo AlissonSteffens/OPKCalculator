@@ -130,7 +130,7 @@ public class MinimosQuadrados {
         Double[][] ampliedMatrix = new Double[this.grau-2][this.grau-1];
         
         for (int i = 0; i < this.grau-2; i++) {
-            for (int j = 0; j < this.grau; j++) {
+            for (int j = 0; j < this.grau-1; j++) {
                 ampliedMatrix[i][j]=0.0;
             }
         }
@@ -142,7 +142,7 @@ public class MinimosQuadrados {
             }           
             ampliedMatrix[i][i]=2*(h[i]+h[i+1]);
             ampliedMatrix[i][i+1]=h[i+1];
-            ampliedMatrix[i][this.grau-1]=b[i];
+            ampliedMatrix[i][this.grau-2]=b[i];
         }
         Sistema sistema = new Sistema(ampliedMatrix);
         this.as = sistema.getVetorSolucao();
