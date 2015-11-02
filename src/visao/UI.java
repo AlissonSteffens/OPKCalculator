@@ -202,7 +202,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel8.setText("Tipo de Funçao de Aproximação ");
 
-        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Exponencial", "Geométrica", "Hiperbólica", "ae^bx" }));
+        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomia", "Geométrica", "ae^bx" }));
         tipoFunacaoAproximacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoFunacaoAproximacaoActionPerformed(evt);
@@ -412,6 +412,10 @@ public class UI extends javax.swing.JFrame {
             xzesMMQ.setText("0,1 0,5 1 2 3");
             ynsMMQ.setText("0,005 0,5 4 30 110");
         }
+        else if(tipoAproximacao.equals("ae^bx")){
+            xzesMMQ.setText("2 5 8 11 14 17 27 31 41 44");
+            ynsMMQ.setText("94,8 89,7 81,3 74,9 68,7 64,0 49,3 44,0 39,1 31,6");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -460,6 +464,11 @@ public class UI extends javax.swing.JFrame {
         if(tipoInterpolacao.equals("SPline")){
             xzesInterpolacao.setText("1 3 5 10 12 15 18 20 30");
             yonsInterpolacao.setText("2 4 6 20 2 24 88 38 1");
+        }
+        else if(tipoInterpolacao.equals("Polinomial"))
+        {
+            xzesInterpolacao.setText("1 3 4 5");
+            yonsInterpolacao.setText("-1 0 1 1 -1");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
     

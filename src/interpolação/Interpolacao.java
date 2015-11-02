@@ -32,8 +32,7 @@ public class Interpolacao {
             calcularSPline();
         }
     }
-   
-   
+     
     
     private void calcularInterpolacaoPolinomial()
     {
