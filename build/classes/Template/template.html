@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>File Test</title>
+
+    <!-- Bootstrap -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="./log.js"></script>
+  </head>
+  <body>    
+      <h1>Resolução</h1>
+      <div id="alunos">
+          Alisson e Adson
+      </div>
+      <hr>
+        <table class="table table-hover tablesorter" id="tabela">
+            <thead>
+            <tr>
+            <th>X</th>
+            <th>Y</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        
+        </table> 
+    <div class="grafico" id="chartContainer"></div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./js/jquery-2.1.4.min.js"></script>
+    <script src="./js/jquery.canvasjs.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.tablesorter.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(
+               
+            function() {
+                percorrerTabela(log.dados);
+                $("#tabela").tablesorter(); 
+            }    
+        );
+
+        function percorrerTabela(array){
+            for(var i=0; i<array.length; i++)
+                {
+                    var linha=array[i];
+                    
+                    $("#tabela tbody").append(
+                    "<tr>"+              
+                    "<td>"+linha.x+"</td>"+
+                    "<td>"+linha.y+"</td>"+
+                    "</tr>"
+                    );
+                }
+        }
+        
+        
+        function preencherChart(opt, array, pos)
+        {
+            for(var i=0; i<array.length;i++)
+            {
+                opt.data[pos].dataPoints.push({x:parseInt(array[i].size), y:parseInt(array[i].time)});
+            }
+        }
+        
+        
+        function chart(title, array, id)
+        {
+            var options = {
+                    title: {
+                            text: title
+                    },
+                    zoomEnabled: true,
+                    animationEnabled: true,
+                    data: [
+                        {
+                                type: "spline", //change it to line, area, column, pie, etc
+                                dataPoints: []
+                        }
+                    ]
+                };                
+                
+                preencherChart(options, array, 0);
+                $(id).CanvasJSChart(options);
+        }
+        $(document).ready(
+                function () {
+                //Better to construct options first and then pass it as a parameter 
+                chart("Gráfico", log.dados, "#chartContainer");
+            }
+        );
+    </script>
+  </body>
+</html>
