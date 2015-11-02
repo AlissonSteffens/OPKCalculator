@@ -191,7 +191,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel8.setText("Tipo de Funçao de Aproximação ");
 
-        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Exponencial", "Geométrica", "Hiperbólica" }));
+        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Exponencial", "Geométrica", "Hiperbólica", "ae^bx", "Interpolação Polinomial", "Interpolação SPline" }));
         tipoFunacaoAproximacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoFunacaoAproximacaoActionPerformed(evt);
@@ -246,12 +246,11 @@ public class UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tipoFunacaoAproximacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(grauLabel)
-                            .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tipoFunacaoAproximacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(grauLabel)
+                        .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
@@ -342,6 +341,7 @@ public class UI extends javax.swing.JFrame {
         String stringXs=xzesMMQ.getText().toString();
         String stringYs=ynsMMQ.getText().toString();
         String grau;
+        String tipoAproximacao = tipoFunacaoAproximacao.getSelectedItem().toString();
         if(grauPolinomio.isVisible())
         {
             grau=grauPolinomio.getText().toString();
@@ -350,7 +350,6 @@ public class UI extends javax.swing.JFrame {
         {
             grau="1";
         }
-        String tipoAproximacao = tipoFunacaoAproximacao.getSelectedItem().toString();
         MinimosQuadrados minimosQuadrados = new MinimosQuadrados(ViewAdapter.stringsToPoints(stringXs, stringYs),Integer.parseInt(grau), tipoAproximacao);
         equacaoLinearizada.setText(ViewAdapter.doubleVectorToString(minimosQuadrados.getList()));
         equacaoAproximada.setText(ViewAdapter.doubleVectorEquation(minimosQuadrados.getList()));
