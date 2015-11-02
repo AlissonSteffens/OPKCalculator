@@ -135,7 +135,7 @@ public class MinimosQuadrados {
             }
         }
         
-        for (int i = 0; i < this.grau-2; i++) {
+        for (int i = 0; i < this.grau-1; i++) {
             if(i>0)
             {
              ampliedMatrix[i][i-1]=h[i];   

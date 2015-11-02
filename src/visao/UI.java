@@ -334,6 +334,10 @@ public class UI extends javax.swing.JFrame {
             xzesMMQ.setText("0,1 0,5 1 2 3");
             ynsMMQ.setText("0,005 0,5 4 30 110");
         }
+        else if(tipoAproximacao.equals("Interpolação SPline")){
+            xzesMMQ.setText("1 3 5 10 12 15 18 20 30");
+            ynsMMQ.setText("2 4 6 20 2 24 88 38 1");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
