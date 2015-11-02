@@ -11,6 +11,8 @@ import interpolação.Interpolacao;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import minimos_quadrados.MinimosQuadrados;
 
@@ -79,6 +81,7 @@ public class UI extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         areaInterpolacao = new javax.swing.JTextArea();
         funcaoInterpolacao = new javax.swing.JTextField();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -127,7 +130,7 @@ public class UI extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
                         .addComponent(calcularGauss)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,7 +205,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel8.setText("Tipo de Funçao de Aproximação ");
 
-        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomia", "Geométrica", "ae^bx" }));
+        tipoFunacaoAproximacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Polinomial", "Geométrica", "ae^bx" }));
         tipoFunacaoAproximacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoFunacaoAproximacaoActionPerformed(evt);
@@ -225,7 +228,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(grauLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -300,6 +303,13 @@ public class UI extends javax.swing.JFrame {
         areaInterpolacao.setRows(5);
         jScrollPane5.setViewportView(areaInterpolacao);
 
+        jToggleButton1.setText("Grafico");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -319,8 +329,10 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipoFuncaoInterpolacao, 0, 453, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(tipoFuncaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -344,7 +356,8 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tipoFuncaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton4)
-                        .addComponent(jButton5)))
+                        .addComponent(jButton5)
+                        .addComponent(jToggleButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -471,6 +484,18 @@ public class UI extends javax.swing.JFrame {
             yonsInterpolacao.setText("-1 0 1 1 -1");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        String stringXs=xzesInterpolacao.getText().toString();
+        String stringYs=yonsInterpolacao.getText().toString();
+        
+        JGraph graph =new JGraph(ViewAdapter.stringsToPoints(stringXs, stringYs));
+        try {
+            graph.showHTML();
+        } catch (Exception ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
     
     private void erroComentario()
     {
@@ -542,6 +567,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedGauss;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField tamanhoMatrizAmpliada;
     private javax.swing.JComboBox tipoFunacaoAproximacao;
     private javax.swing.JComboBox tipoFuncaoInterpolacao;

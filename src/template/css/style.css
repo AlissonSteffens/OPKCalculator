@@ -1,0 +1,83 @@
+
+@media screen and (max-width: 799px) 
+{
+    body{
+    margin: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
+    }
+    .grafico{
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 800px) 
+{
+    body{
+    margin: 100px;
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+    .grafico{
+        height: 500px;
+    }
+}
+
+
+body{
+    color: #333;
+}
+
+
+.grafico{
+    width: 100%;
+}
+#alunos{
+    font-size: 11px;
+    margin: 0;
+    text-align: right;
+}
+.atent{
+    color: #33adbc;
+}
+
+h3{
+    color: #33adbc;
+}
+article{
+    margin-top: 75px;
+    text-align: justify;
+}
+h1{
+    text-align: center;
+}
+.grafico{
+    margin-top: 50px;
+}
+.table{
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+table.tablesorter {
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+}
+table.tablesorter tbody tr.odd td {
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+}

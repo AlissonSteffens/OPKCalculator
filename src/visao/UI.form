@@ -98,7 +98,7 @@
                               <Component id="jScrollPane3" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="392" max="32767" attributes="0"/>
+                                  <EmptySpace pref="384" max="32767" attributes="0"/>
                                   <Component id="calcularGauss" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton1" min="-2" pref="26" max="-2" attributes="0"/>
@@ -248,7 +248,7 @@
                                   <Component id="grauLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="grauPolinomio" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                                  <EmptySpace pref="35" max="32767" attributes="0"/>
                                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButton2" min="-2" pref="26" max="-2" attributes="0"/>
@@ -384,7 +384,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="Polinomia"/>
+                        <StringItem index="0" value="Polinomial"/>
                         <StringItem index="1" value="Geom&#xe9;trica"/>
                         <StringItem index="2" value="ae^bx"/>
                       </StringArray>
@@ -425,8 +425,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tipoFuncaoInterpolacao" pref="453" max="32767" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="tipoFuncaoInterpolacao" min="-2" pref="357" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jToggleButton1" pref="94" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButton4" min="-2" pref="25" max="-2" attributes="0"/>
@@ -457,6 +459,7 @@
                                   <Component id="tipoFuncaoInterpolacao" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -532,6 +535,14 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JTextField" name="funcaoInterpolacao">
+                </Component>
+                <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Grafico"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
