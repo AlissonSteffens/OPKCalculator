@@ -54,6 +54,8 @@ public class UI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         tamanhoMatrizAmpliada = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        vetorSolucao = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         xzesMMQ = new javax.swing.JTextField();
@@ -80,7 +82,6 @@ public class UI extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         areaInterpolacao = new javax.swing.JTextArea();
-        funcaoInterpolacao = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
 
         jTextArea1.setColumns(20);
@@ -119,6 +120,14 @@ public class UI extends javax.swing.JFrame {
 
         jLabel3.setText("Entre com a Matriz Ampliada, separando as posições com espaços");
 
+        vetorSolucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vetorSolucaoActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Vetor Solução");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -126,11 +135,12 @@ public class UI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vetorSolucao, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane3)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(calcularGauss)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,8 +150,9 @@ public class UI extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tamanhoMatrizAmpliada, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel11))
+                        .addGap(0, 357, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -154,21 +165,18 @@ public class UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(calcularGauss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(calcularGauss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vetorSolucao, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -267,7 +275,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(grauPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -335,8 +343,7 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(funcaoInterpolacao))
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -359,9 +366,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addComponent(jToggleButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(funcaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -409,8 +414,8 @@ public class UI extends javax.swing.JFrame {
         String tamanho = tamanhoMatrizAmpliada.getText().toString();
         
         Sistema sistema = new Sistema(ViewAdapter.stringToMatrix(tamanho, matriz));
-        areaMatrizEscalonada.setText(ViewAdapter.matrixToString(sistema.getMatriz(), sistema.getVetorSolucao()));
-            
+        areaMatrizEscalonada.setText(ViewAdapter.matrixToString(sistema.getMatriz()));
+        vetorSolucao.setText(ViewAdapter.vetorSolucaoToString(sistema.getVetorSolucao()));
     }//GEN-LAST:event_calcularGaussActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -469,7 +474,6 @@ public class UI extends javax.swing.JFrame {
         String tipodeInterpolacao = tipoFuncaoInterpolacao.getSelectedItem().toString();
         Interpolacao interpolacao= new Interpolacao(ViewAdapter.stringsToPoints(stringXs, stringYs), tipodeInterpolacao);
         areaInterpolacao.setText(ViewAdapter.doubleVectorToString(interpolacao.getList()));
-        funcaoInterpolacao.setText(ViewAdapter.doubleVectorEquation(interpolacao.getList()));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -496,6 +500,10 @@ public class UI extends javax.swing.JFrame {
             Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void vetorSolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vetorSolucaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vetorSolucaoActionPerformed
     
     private void erroComentario()
     {
@@ -538,7 +546,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton calcularGauss;
     private javax.swing.JTextField equacaoAproximada;
     private javax.swing.JTextArea equacaoLinearizada;
-    private javax.swing.JTextField funcaoInterpolacao;
     private javax.swing.JLabel grauLabel;
     private javax.swing.JTextField grauPolinomio;
     private javax.swing.JButton jButton1;
@@ -548,6 +555,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -571,6 +579,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTextField tamanhoMatrizAmpliada;
     private javax.swing.JComboBox tipoFunacaoAproximacao;
     private javax.swing.JComboBox tipoFuncaoInterpolacao;
+    private javax.swing.JTextField vetorSolucao;
     private javax.swing.JTextField xzesInterpolacao;
     private javax.swing.JTextField xzesMMQ;
     private javax.swing.JTextField ynsMMQ;

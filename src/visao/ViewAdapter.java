@@ -40,12 +40,10 @@ public class ViewAdapter {
      * @param vetorSolucao
      * @return
      */
-    public static String matrixToString(Double[][] matrizExpandida, Double[] vetorSolucao){
+    public static String matrixToString(Double[][] matrizExpandida){
         int linhas = matrizExpandida.length;
         int colunas = matrizExpandida[0].length;
         String matrizEscalonada = "";
-        String vetorFinal = "";
-
         //Escreve a matriz expandida do sistema no formato decimal definido em df.
         for (int i = 0; i < linhas; i++) {
                 for (int j = 0; j < colunas; j++) {
@@ -55,6 +53,12 @@ public class ViewAdapter {
                 }
                 matrizEscalonada += "\n";
         }
+        
+        return "Matriz escalonada:\n"+ matrizEscalonada;
+    }
+    
+    public static String vetorSolucaoToString(Double[] vetorSolucao){
+        String vetorFinal = "";
         //Escreve o vetor solucao do sistema no formato decimal definido em df.
         for (int i = 0; i < vetorSolucao.length; i++) {
                 if ( !(i == vetorSolucao.length) )
@@ -65,10 +69,8 @@ public class ViewAdapter {
                     vetorFinal +=vetorSolucao[i];
                 }
         }
-
         vetorFinal = vetorFinal.substring(0, vetorFinal.length()-2);
-        
-        return "Matriz escalonada:\n"+ matrizEscalonada + "vetorSolucao= ["+ vetorFinal+"]";
+        return vetorFinal;
     }
     public static List<Point> stringsToPoints(String stringXs, String stringYs){
         List<Point> points= new ArrayList<>();
