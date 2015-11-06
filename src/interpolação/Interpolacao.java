@@ -6,6 +6,7 @@
 package interpolação;
 
 import gauss.Sistema;
+import java.util.ArrayList;
 import java.util.List;
 import minimos_quadrados.Point;
 
@@ -16,7 +17,10 @@ import minimos_quadrados.Point;
 public class Interpolacao {
    private int grau;
    private List<Point> points;
-   private Double[] as;
+   private Double[] g;
+   List<Double[]> functions = new ArrayList<>();
+
+    
 
     public Interpolacao(List<Point> points, String tipoInterpolação) {
         this.points=points;
@@ -46,7 +50,7 @@ public class Interpolacao {
             ampliedMatrix[i][this.grau+1]=points.get(i).getY();
         }
         Sistema sistema = new Sistema(ampliedMatrix);
-        this.as = sistema.getVetorSolucao();
+        this.g = sistema.getVetorSolucao();
     }
     
     private void calcularSPline()
@@ -78,11 +82,35 @@ public class Interpolacao {
             ampliedMatrix[i][this.grau-1]=b[i];
         }
         Sistema sistema = new Sistema(ampliedMatrix);
-        this.as = sistema.getVetorSolucao();
+        this.g = sistema.getVetorSolucao();
+               
+        for(int i=0; i<this.grau; i++)
+        {
+            Double[] func = new Double[4];
+            
+            if(i==0)
+            {
+                func[0]=(g[i])/(6*h[i]);
+                func[2]=(points.get(i).getY()/h[i])+((2*h[i]*g[i])/6);
+            }           
+            else
+            {
+                func[0]=(g[i]-g[i-1])/(6*h[i]);
+                func[2]=((points.get(i).getY()-points.get(i-1).getY())/h[i])+((2*h[i]*g[i]+g[i-1]*h[i])/6);
+            }
+            func[1]=g[i]/2;
+            func[3]=points.get(i).getY();
+            
+            functions.add(func);
+        }
+    }
+    
+    public List<Double[]> getFunctions() {
+        return functions;
     }
     
     public Double[] getList()
     {
-        return as;
+        return g;
     }
 }
