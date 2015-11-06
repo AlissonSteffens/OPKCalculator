@@ -82,24 +82,29 @@ public class Interpolacao {
             ampliedMatrix[i][this.grau-1]=b[i];
         }
         Sistema sistema = new Sistema(ampliedMatrix);
-        this.g = sistema.getVetorSolucao();
-               
+        Double[] temp = sistema.getVetorSolucao();
+        this.g = new Double[temp.length+1];
+        for(int i=0; i<temp.length;i++)
+        {
+            this.g[i]=temp[i];
+        }
+        this.g[temp.length]=0.0;
         for(int i=0; i<this.grau; i++)
         {
             Double[] func = new Double[4];
             
             if(i==0)
             {
-                func[0]=(g[i])/(6*h[i]);
-                func[2]=(points.get(i).getY()/h[i])+((2*h[i]*g[i])/6);
+                func[3]=(g[i])/(6*h[i]);
+                func[1]=(points.get(i).getY()/h[i])+((2*h[i]*g[i])/6);
             }           
             else
             {
-                func[0]=(g[i]-g[i-1])/(6*h[i]);
-                func[2]=((points.get(i).getY()-points.get(i-1).getY())/h[i])+((2*h[i]*g[i]+g[i-1]*h[i])/6);
+                func[3]=(g[i]-g[i-1])/(6*h[i]);
+                func[1]=((points.get(i).getY()-points.get(i-1).getY())/h[i])+((2*h[i]*g[i]+g[i-1]*h[i])/6);
             }
-            func[1]=g[i]/2;
-            func[3]=points.get(i).getY();
+            func[2]=g[i]/2;
+            func[0]=points.get(i+1).getY();
             
             functions.add(func);
         }

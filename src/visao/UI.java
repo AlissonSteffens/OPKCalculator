@@ -488,7 +488,14 @@ public class UI extends javax.swing.JFrame {
         String stringYs=yonsInterpolacao.getText().toString();
         String tipodeInterpolacao = tipoFuncaoInterpolacao.getSelectedItem().toString();
         Interpolacao interpolacao= new Interpolacao(ViewAdapter.stringsToPoints(stringXs, stringYs), tipodeInterpolacao);
-        areaInterpolacao.setText(ViewAdapter.doubleVectorToString(interpolacao.getList()));
+        if(tipodeInterpolacao.equals("SPline"))
+        {
+            areaInterpolacao.setText(ViewAdapter.doubleVectorEquations(interpolacao.getList(), interpolacao.getFunctions()));
+        }
+        else
+        {
+            areaInterpolacao.setText(ViewAdapter.doubleVectorToString(interpolacao.getList()));
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

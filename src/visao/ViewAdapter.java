@@ -110,4 +110,33 @@ public class ViewAdapter {
         resposta = resposta.replace("+ -", "- ");
         return resposta;
     }
+    public static String doubleVectorEquations(Double[] list, List<Double[]> doubles)
+    {
+        String resposta = "";
+        
+        for (int i = 0; i < list.length; i++){
+            resposta+="g"+(i+1)+" = "+list[i]+"\n";
+        }
+        resposta+="\n \n";
+        for (int i = 0; i < doubles.size(); i++){
+            resposta+="S"+(i+1)+" = "+doubleVectorEquationSP(doubles.get(i))+"\n";
+        }
+        return resposta;
+    }
+    
+    public static String doubleVectorEquationSP(Double[] doubles){
+        String resposta = "";
+       
+        for (int i =  doubles.length-1; i >= 0; i--){
+            if(doubles[i]!=0){
+                resposta+=doubles[i];
+                if(i>0){
+                    resposta+=" (xk - xk-1)^"+i+" + ";
+                }
+            }
+        }
+        
+        resposta = resposta.replace("+ -", "- ");
+        return resposta;
+    }
 }
