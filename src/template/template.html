@@ -78,29 +78,39 @@
         }
         
         
-        function chart(title, array, id)
+        function chart()
         {
             var options = {
                     title: {
-                            text: title
+                            text: "Gráfico Geral"
                     },
                     zoomEnabled: true,
                     animationEnabled: true,
                     data: [
                         {
-                                type: "spline", //change it to line, area, column, pie, etc
+                                type: "line",  
+                                name: "Entrada", 
+                                showInLegend: true,
+                                dataPoints: []
+                        },
+                        {
+                                type: "spline",  
+                                name: "Calculado", 
+                                showInLegend: true,
                                 dataPoints: []
                         }
                     ]
-                };                
+                };
                 
-                preencherChart(options, array, 0);
-                $(id).CanvasJSChart(options);
+                
+                preencherChart(options, log.dados, 0);
+                preencherChart(options, log.calculados, 1);
+                $("#chartContainer").CanvasJSChart(options);
         }
         $(document).ready(
                 function () {
                 //Better to construct options first and then pass it as a parameter 
-                chart("Gráfico", log.dados, "#chartContainer");
+                chart();
             }
         );
     </script>

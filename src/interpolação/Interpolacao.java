@@ -7,6 +7,7 @@ package interpolação;
 
 import gauss.Sistema;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import minimos_quadrados.Point;
 
@@ -17,10 +18,18 @@ import minimos_quadrados.Point;
 public class Interpolacao {
    private int grau;
    private List<Point> points;
+   private Double[][]matrizInicial;
+   private Double[][]matrizEscalonada;
    private Double[] g;
    List<Double[]> functions = new ArrayList<>();
 
-    
+    public Double[][] getMatrizInicial() {
+        return matrizInicial;
+    }
+
+    public Double[][] getMatrizEscalonada() {
+        return matrizEscalonada;
+    }
 
     public Interpolacao(List<Point> points, String tipoInterpolação) {
         this.points=points;
@@ -41,6 +50,7 @@ public class Interpolacao {
     private void calcularInterpolacaoPolinomial()
     {
         Double[][] ampliedMatrix = new Double[this.grau+1][this.grau+2];
+        
         for (int i = 0; i < this.grau+1; i++) {
             for (int j = 0; j < this.grau+1; j++) {
                 ampliedMatrix[i][j]=Math.pow(points.get(i).getX(), j);
@@ -49,8 +59,15 @@ public class Interpolacao {
         for (int i = 0; i < this.grau+1; i++) {
             ampliedMatrix[i][this.grau+1]=points.get(i).getY();
         }
+        this.matrizInicial = new Double[ampliedMatrix.length][ampliedMatrix[0].length];
+        for(int i=0; i<ampliedMatrix.length;i++){
+            for (int j = 0; j < ampliedMatrix[0].length; j++) {
+                this.matrizInicial[i][j]=ampliedMatrix[i][j];
+            }
+        }
         Sistema sistema = new Sistema(ampliedMatrix);
         this.g = sistema.getVetorSolucao();
+        this.matrizEscalonada = sistema.getMatriz();
     }
     
     private void calcularSPline()
@@ -81,8 +98,15 @@ public class Interpolacao {
             ampliedMatrix[i][i+1]=h[i+1];
             ampliedMatrix[i][this.grau-1]=b[i];
         }
+        this.matrizInicial = new Double[ampliedMatrix.length][ampliedMatrix[0].length];
+        for(int i=0; i<ampliedMatrix.length;i++){
+            for (int j = 0; j < ampliedMatrix[0].length; j++) {
+                this.matrizInicial[i][j]=ampliedMatrix[i][j];
+            }
+        }
         Sistema sistema = new Sistema(ampliedMatrix);
         Double[] temp = sistema.getVetorSolucao();
+        this.matrizEscalonada = sistema.getMatriz();
         this.g = new Double[temp.length+1];
         for(int i=0; i<temp.length;i++)
         {

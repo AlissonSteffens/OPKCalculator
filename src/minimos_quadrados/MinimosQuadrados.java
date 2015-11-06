@@ -10,7 +10,17 @@ public class MinimosQuadrados {
     private Double[] as;
     private Double[] vectorY;
     List<Double[]> vectors;
+    private Double[][]matrizInicial;
+   private Double[][]matrizEscalonada;
 
+    public Double[][] getMatrizInicial() {
+        return matrizInicial;
+    }
+
+    public Double[][] getMatrizEscalonada() {
+        return matrizEscalonada;
+    }
+   
     public MinimosQuadrados(List<Point> points, int grau, String tipoAproximacao) {
         this.points = points;
         this.grau=grau;
@@ -101,9 +111,15 @@ public class MinimosQuadrados {
         for (int i = 0; i < this.grau+1; i++) {
             ampliedMatrix[i][this.grau+1]=addVectors(vectors.get(i), vectorY);
         }
-        
+        this.matrizInicial = new Double[ampliedMatrix.length][ampliedMatrix[0].length];
+        for(int i=0; i<ampliedMatrix.length;i++){
+            for (int j = 0; j < ampliedMatrix[0].length; j++) {
+                this.matrizInicial[i][j]=ampliedMatrix[i][j];
+            }
+        }
         Sistema sistema = new Sistema(ampliedMatrix);
         this.as = sistema.getVetorSolucao();
+        this.matrizEscalonada = sistema.getMatriz();
     }
     
     private Double addVectors(Double[] vectA, Double[] vectB){

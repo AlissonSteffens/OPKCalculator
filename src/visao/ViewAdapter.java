@@ -54,7 +54,7 @@ public class ViewAdapter {
                 matrizEscalonada += "\n";
         }
         
-        return "Matriz escalonada:\n"+ matrizEscalonada;
+        return matrizEscalonada;
     }
     
     public static String vetorSolucaoToString(Double[] vetorSolucao){
@@ -95,9 +95,11 @@ public class ViewAdapter {
         return resposta;
     }
         
-    public static String doubleVectorEquation(Double[] doubles){
+    public static String doubleVectorEquation(Double[] doubles,String tipo){
         String resposta = "";
-       
+       if(tipo.equals("Polinomial"))
+       {
+           
         for (int i =  doubles.length-1; i >= 0; i--){
             if(doubles[i]!=0){
                 resposta+=doubles[i];
@@ -108,6 +110,13 @@ public class ViewAdapter {
         }
         
         resposta = resposta.replace("+ -", "- ");
+       }
+       else if(tipo.equals("Geométrica")){
+           resposta+=doubles[0]+"x^"+doubles[1];
+       }
+       else{
+           resposta+=doubles[0]+"e^x*"+doubles[1];
+       }
         return resposta;
     }
     public static String doubleVectorEquations(Double[] list, List<Double[]> doubles)

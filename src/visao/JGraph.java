@@ -27,25 +27,40 @@ import minimos_quadrados.Point;
 public class JGraph {
     
     private List<Point> points;
+    private List<Point> calculatedPoints;
 
-    public JGraph(List<Point> points) {
+    public JGraph(List<Point> points, List<Point> calculatedPoints) {
         this.points =points;
+        this.calculatedPoints=calculatedPoints;
     }
 
     public void showHTML() throws Exception {
         Map<String, List> map1 = new HashMap<>();
                 
-        List<Map<String,String>> fileStream = new ArrayList<>();
+        List<Map<String,String>> entrada = new ArrayList<>();
         
         for(int i=0;i<this.points.size(); i++)
         {
-            Map<String,String> linha= new HashMap<>();
-            linha.put("x", this.points.get(i).getX().toString());
-            linha.put("y", this.points.get(i).getY().toString());
+            Map<String,String> pontosEntrada= new HashMap<>();
+            pontosEntrada.put("x", this.points.get(i).getX().toString());
+            pontosEntrada.put("y", this.points.get(i).getY().toString());
             
-            fileStream.add(linha);
+            entrada.add(pontosEntrada);
         }
-         map1.put("dados", fileStream);
+        
+        List<Map<String,String>> saida = new ArrayList<>();
+        
+        for(int i=0;i<this.calculatedPoints.size(); i++)
+        {
+            Map<String,String> pontosSaida= new HashMap<>();
+            pontosSaida.put("x", this.calculatedPoints.get(i).getX().toString());
+            pontosSaida.put("y", this.calculatedPoints.get(i).getY().toString());
+            
+            saida.add(pontosSaida);
+        }
+        
+         map1.put("dados", entrada);
+         map1.put("calculados", saida);
          
          Gson gson= new GsonBuilder().setPrettyPrinting().create();
          String code = gson.toJson(map1);
