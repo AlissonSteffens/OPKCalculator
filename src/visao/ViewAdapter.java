@@ -140,7 +140,7 @@ public class ViewAdapter {
             if(doubles[i]!=0){
                 resposta+=doubles[i];
                 if(i>0){
-                    resposta+=" (xk - xk-1)^"+i+" + ";
+                    resposta+=" (x - xk)^"+i+" + ";
                 }
             }
         }

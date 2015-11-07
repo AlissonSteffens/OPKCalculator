@@ -74,7 +74,7 @@ public class MinimosQuadrados {
             vectorY[i]=Math.log(points.get(i).getY());
         }
         calcular();
-        this.as[0]=Math.log(this.as[0]);
+        this.as[0]=Math.exp(this.as[0]);
     }
     
     private void calcular_aebx()
