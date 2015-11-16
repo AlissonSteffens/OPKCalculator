@@ -18,12 +18,12 @@ public abstract class IntegralNumerica extends Integral{
     protected Double pontoInicial;
     protected Double pontoFinal;
 
-    public IntegralNumerica(Double h, Integer pontos, Double pontoInicial, Double pontoFinal, Funcao funcao) {
+    public IntegralNumerica(Integer pontos, Double pontoInicial, Double pontoFinal, Funcao funcao) {
         super(funcao);
-        this.h = h;
         this.pontos = pontos;
         this.pontoInicial = pontoInicial;
         this.pontoFinal = pontoFinal;
+        this.h = (pontoFinal-pontoInicial)/pontos;
     }
     
 }

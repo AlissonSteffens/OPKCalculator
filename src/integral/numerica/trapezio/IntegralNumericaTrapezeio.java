@@ -15,8 +15,8 @@ import java.util.Objects;
  */
 public class IntegralNumericaTrapezeio extends IntegralNumerica{
 
-    public IntegralNumericaTrapezeio(Double h, Integer pontos, Double pontoInicial, Double pontoFinal, Funcao funcao) {
-        super(h, pontos, pontoInicial, pontoFinal, funcao);
+    public IntegralNumericaTrapezeio(Integer pontos, Double pontoInicial, Double pontoFinal, Funcao funcao) {
+        super(pontos, pontoInicial, pontoFinal, funcao);
     }
 
     @Override
