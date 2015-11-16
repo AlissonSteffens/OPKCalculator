@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integral.numerica.trapezio;
+package integral.numerica.simpson;
 
 import funcoes.Funcao;
 import integral.numerica.IntegralNumerica;
@@ -11,11 +11,11 @@ import java.util.Objects;
 
 /**
  *
- * @author 5663296
+ * @author Alisson
  */
-public class IntegralNumericaTrapezeio extends IntegralNumerica{
+public class IntegralNumericaSimpsonUmTerco extends IntegralNumerica{
 
-    public IntegralNumericaTrapezeio(Double h, Integer pontos, Double pontoInicial, Double pontoFinal, Funcao funcao) {
+    public IntegralNumericaSimpsonUmTerco(Double h, Integer pontos, Double pontoInicial, Double pontoFinal, Funcao funcao) {
         super(h, pontos, pontoInicial, pontoFinal, funcao);
     }
 
@@ -26,11 +26,14 @@ public class IntegralNumericaTrapezeio extends IntegralNumerica{
             if(Objects.equals(i, pontoInicial) || Objects.equals(i, pontoFinal)){
                 resposta+=funcao.calcular(i);
             }
+            else if(i%2==0){
+                resposta+=4*funcao.calcular(i);
+            }
             else{
                 resposta+=2*funcao.calcular(i);
             }
         }
-        resposta= (resposta*h)/2;
+        resposta= (resposta*h)/3;
         return resposta;
     }
     

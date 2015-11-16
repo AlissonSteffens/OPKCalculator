@@ -88,7 +88,7 @@ public class UI extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         campoFuncao = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        tipoDerivada = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
         taxaErro = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -402,7 +402,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel13.setText("Tipo de Derivada");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Superior", "Inferior", "Centrada" }));
+        tipoDerivada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Superior", "Inferior", "Centrada" }));
 
         jLabel14.setText("Erro: 10^-");
 
@@ -451,7 +451,7 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tipoDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -485,7 +485,7 @@ public class UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(taxaErro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
@@ -695,7 +695,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        if(tipoDerivada.equals("Superior"));
     }//GEN-LAST:event_jButton8ActionPerformed
     
     private void erroComentario()
@@ -750,7 +750,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -787,6 +786,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTextField tamanhoMatrizAmpliada;
     private javax.swing.JTextField taxaErro;
     private javax.swing.JTextField taxaIncremento;
+    private javax.swing.JComboBox tipoDerivada;
     private javax.swing.JComboBox tipoFunacaoAproximacao;
     private javax.swing.JComboBox tipoFuncaoInterpolacao;
     private javax.swing.JTextField valorX;
