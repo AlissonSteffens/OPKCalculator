@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/user/Documents/GitHub/OPKCalculator/src/integral/numerica/simpson/IntegralNumericaSimpsonTreisOitavos.java</file>
-            <file>file:/D:/user/Documents/GitHub/OPKCalculator/src/derivada/numerica/DerivadaCentrada.java</file>
-            <file>file:/D:/user/Documents/GitHub/OPKCalculator/src/integral/numerica/IntegralNumerica.java</file>
-            <file>file:/D:/user/Documents/GitHub/OPKCalculator/src/integral/numerica/trapezio/IntegralNumericaTrapezeio.java</file>
-            <file>file:/D:/user/Documents/GitHub/OPKCalculator/src/integral/numerica/simpson/IntegralNumericaSimpsonUmTerco.java</file>
+            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/integral/numerica/trapezio/IntegralNumericaTrapezeio.java</file>
+            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/util/VerificadordeErro.java</file>
+            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/equacao_diferencial/euler/EquacaoDiferencialMetododeEuler.java</file>
+            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/visao/UI.java</file>
+            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/testr.java</file>
+            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/equacao_diferencial/euler/MetododeEuler.java</file>
         </group>
     </open-files>
 </project-private>
