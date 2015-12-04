@@ -23,7 +23,7 @@ public abstract class IntegralNumerica extends Integral{
         this.pontos = pontos;
         this.pontoInicial = pontoInicial;
         this.pontoFinal = pontoFinal;
-        this.h = (pontoFinal-pontoInicial)/pontos;
+        this.h = (pontoFinal-pontoInicial)/(pontos-1);
     }
     
 }

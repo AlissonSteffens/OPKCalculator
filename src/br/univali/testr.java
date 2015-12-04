@@ -11,6 +11,8 @@ import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEulerModif
 import br.univali.equacao_diferencial.euler.MetododeEuler;
 import br.univali.funcoes.Funcao;
 import br.univali.funcoes.Funcao_Euler;
+import br.univali.integral.numerica.IntegralNumerica;
+import br.univali.integral.numerica.simpson.IntegralNumericaSimpsonTreisOitavos;
 import br.univali.minimos_quadrados.Point;
 import java.util.List;
 
@@ -20,16 +22,16 @@ import java.util.List;
  */
 public class testr {
     public static void main(String[] args) {
-        MetododeEuler metododeEuler = new EquacaoDiferencialMetododeEuler( 2.0, new Funcao_Euler() {
+        IntegralNumerica integralNumerica =  new IntegralNumericaSimpsonTreisOitavos(7, 0.0, 1.0, new Funcao() {
 
             @Override
-            public Double calcular(Double x, Double y) {
-                return -y+x+2;
+            public Double calcular(Double x) {
+                return x*Math.exp(x);
             }
-        }, 0.1, 0.0, 0.9);
-        List<Point> pontos = metododeEuler.calcular();
-        for (int i = 0; i < pontos.size(); i++) {
-            System.out.println("x= "+pontos.get(i).getX()+" y= "+ pontos.get(i).getY());
-        }
+        });
+        System.out.println(integralNumerica.calcular());
+//        for (int i = 0; i < pontos.size(); i++) {
+//            System.out.println("x= "+pontos.get(i).getX()+" y= "+ pontos.get(i).getY());
+//        }
     }
 }

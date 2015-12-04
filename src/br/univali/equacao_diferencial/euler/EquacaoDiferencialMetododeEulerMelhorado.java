@@ -26,10 +26,12 @@ public class EquacaoDiferencialMetododeEulerMelhorado extends MetododeEuler{
     public List<Point> calcular() {
         List<Point> points = new ArrayList<>();;
         points.add(new Point(xInicial, y0));
-        int j=1;
+        int j=0;
         for(Double i=xInicial+h;i<=xFinal;i+=h){
-            i= new BigDecimal(i.toString()).setScale(2, RoundingMode.HALF_DOWN).doubleValue();
-            Double y=points.get(j-1).getY()+(h*(funcao.calcular(i-h, points.get(j-1).getY() + funcao.calcular(i, points.get(j-1).getY() + h*funcao.calcular(i-h, points.get(j-1).getY())))))/2;            
+            i= new BigDecimal(i).setScale(2, RoundingMode.HALF_DOWN).doubleValue();
+            Double K1 = funcao.calcular(i-h, points.get(j).getY());
+            Double K2 = funcao.calcular(i, points.get(j).getY()+(h*K1));
+            Double y=points.get(j).getY()+(h*(K1+K2)/2);
             System.out.println(i);
             points.add(new Point(i, y));
             j++;

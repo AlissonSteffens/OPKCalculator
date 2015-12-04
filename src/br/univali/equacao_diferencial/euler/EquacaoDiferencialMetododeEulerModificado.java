@@ -27,7 +27,7 @@ public class EquacaoDiferencialMetododeEulerModificado extends MetododeEuler{
         points.add(new Point(xInicial, y0));
         int j=1;
         for(Double i=xInicial+h;i<=xFinal;i+=h){
-            i= new BigDecimal(i.toString()).setScale(2, RoundingMode.HALF_DOWN).doubleValue();
+            i= new BigDecimal(i).setScale(2, RoundingMode.HALF_DOWN).doubleValue();
             Double y=points.get(j-1).getY()+h*funcao.calcular((i-h)+(h/2), ((points.get(j-1).getY())+((h*funcao.calcular(i-h, points.get(j-1).getY()))/2)));            
             System.out.println(i);
             points.add(new Point(i, y));
