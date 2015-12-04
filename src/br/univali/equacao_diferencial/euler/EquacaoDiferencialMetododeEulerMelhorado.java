@@ -12,24 +12,26 @@ import java.util.List;
 
 /**
  *
- * @author Alisson
+ * @author Adson Estevesa
  */
-public class EquacaoDiferencialMetododeEuler extends MetododeEuler{
+public class EquacaoDiferencialMetododeEulerMelhorado extends MetododeEuler{
 
-    public EquacaoDiferencialMetododeEuler(Double y0, Funcao_Euler funcao, Double h, Double xInicial, Double xFinal) {
+    public EquacaoDiferencialMetododeEulerMelhorado(Double y0, Funcao_Euler funcao, Double h, Double xInicial, Double xFinal) {
         super(y0, funcao, h, xInicial, xFinal);
     }
 
-    public List<Point> calcular(){
+    @Override
+    public List<Point> calcular() {
         List<Point> points = new ArrayList<>();;
         points.add(new Point(xInicial, y0));
         int j=1;
         for(Double i=xInicial+h;i<=xFinal;i+=h){
-            Double y=points.get(j-1).getY()+h*funcao.calcular(i-h, points.get(j-1).getY());            
+            Double y=points.get(j-1).getY()+(h*(funcao.calcular(i-h, points.get(j-1).getY() + funcao.calcular(i, points.get(j-1).getY() + h*funcao.calcular(i-h, points.get(j-1).getY())))))/2;            
             System.out.println(i);
             points.add(new Point(i, y));
             j++;
         }
         return points;
     }
+    
 }

@@ -6,8 +6,13 @@
 package br.univali;
 
 import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEuler;
+import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEulerMelhorado;
+import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEulerModificado;
 import br.univali.equacao_diferencial.euler.MetododeEuler;
 import br.univali.funcoes.Funcao;
+import br.univali.funcoes.Funcao_Euler;
+import br.univali.minimos_quadrados.Point;
+import java.util.List;
 
 /**
  *
@@ -15,12 +20,16 @@ import br.univali.funcoes.Funcao;
  */
 public class testr {
     public static void main(String[] args) {
-        MetododeEuler metododeEuler = new EquacaoDiferencialMetododeEuler(2, new Funcao() {
+        MetododeEuler metododeEuler = new EquacaoDiferencialMetododeEulerMelhorado( 2.0, new Funcao_Euler() {
 
             @Override
-            public Double calcular(Double x) {
-                return 
+            public Double calcular(Double x, Double y) {
+                return -y+x+2;
             }
-        }, Double.NaN, Double.NaN, Double.NaN)
+        }, 0.1, 0.0, 0.4);
+        List<Point> pontos = metododeEuler.calcular();
+        for (int i = 0; i < pontos.size(); i++) {
+            System.out.println("x= "+pontos.get(i).getX()+" y= "+ pontos.get(i).getY());
+        }
     }
 }
