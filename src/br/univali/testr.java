@@ -20,13 +20,13 @@ import java.util.List;
  */
 public class testr {
     public static void main(String[] args) {
-        MetododeEuler metododeEuler = new EquacaoDiferencialMetododeEulerMelhorado( 2.0, new Funcao_Euler() {
+        MetododeEuler metododeEuler = new EquacaoDiferencialMetododeEuler( 2.0, new Funcao_Euler() {
 
             @Override
             public Double calcular(Double x, Double y) {
                 return -y+x+2;
             }
-        }, 0.1, 0.0, 0.4);
+        }, 0.1, 0.0, 0.9);
         List<Point> pontos = metododeEuler.calcular();
         for (int i = 0; i < pontos.size(); i++) {
             System.out.println("x= "+pontos.get(i).getX()+" y= "+ pontos.get(i).getY());
