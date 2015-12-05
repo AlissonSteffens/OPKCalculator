@@ -8,7 +8,7 @@ package br.univali.visao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import br.univali.minimos_quadrados.Point;
+import br.univali.model.minimos_quadrados.Point;
 
 /**
  *

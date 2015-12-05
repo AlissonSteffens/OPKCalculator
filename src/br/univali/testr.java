@@ -5,31 +5,47 @@
  */
 package br.univali;
 
-import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEuler;
-import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEulerMelhorado;
-import br.univali.equacao_diferencial.euler.EquacaoDiferencialMetododeEulerModificado;
-import br.univali.equacao_diferencial.euler.MetododeEuler;
-import br.univali.funcoes.Funcao;
-import br.univali.funcoes.Funcao_Euler;
-import br.univali.integral.numerica.IntegralNumerica;
-import br.univali.integral.numerica.simpson.IntegralNumericaSimpsonTreisOitavos;
-import br.univali.minimos_quadrados.Point;
-import java.util.List;
-
+import br.univali.model.infinitesimal.derivada.Derivada;
+import br.univali.model.infinitesimal.derivada.numerica.DerivadaCentrada;
+import br.univali.model.infinitesimal.derivada.numerica.DerivadaInferior;
+import br.univali.model.funcoes.Funcao;
+import br.univali.model.infinitesimal.integral.numerica.IntegralNumerica;
+import br.univali.model.infinitesimal.integral.numerica.simpson.IntegralNumericaSimpsonTreisOitavos;
+import br.univali.model.infinitesimal.integral.numerica.simpson.IntegralNumericaSimpsonUmTerco;
+import br.univali.model.util.VerificadordeErro;
+ 
 /**
  *
  * @author Alisson
  */
 public class testr {
     public static void main(String[] args) {
-        IntegralNumerica integralNumerica =  new IntegralNumericaSimpsonTreisOitavos(7, 0.0, 1.0, new Funcao() {
-
+        
+        Double valorAnterior;
+        Double temp;
+        int pontos = 3;
+        IntegralNumerica integralNumerica =  new IntegralNumericaSimpsonUmTerco(pontos, 0.0, 1.0, new Funcao() {
             @Override
             public Double calcular(Double x) {
                 return x*Math.exp(x);
             }
         });
+        valorAnterior = integralNumerica.calcular();
+        temp = valorAnterior;
+        do{
+            valorAnterior=temp;
+            pontos+=2;
+            integralNumerica.setPontos(pontos);
+            temp = integralNumerica.calcular();
+        }while(!VerificadordeErro.verificarErro(valorAnterior, temp, 0.0000000001));
+        
+        System.out.println(pontos);
         System.out.println(integralNumerica.calcular());
+        
+//        System.out.println("------------------------------");
+//        integralNumerica.setPontos(10);
+//        System.out.println(integralNumerica.calcular());
+        
 //        for (int i = 0; i < pontos.size(); i++) {
 //            System.out.println("x= "+pontos.get(i).getX()+" y= "+ pontos.get(i).getY());
 //        }

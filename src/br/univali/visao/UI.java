@@ -6,15 +6,15 @@
 package br.univali.visao;
 
 import com.alee.laf.WebLookAndFeel;
-import br.univali.gauss.Sistema;
-import br.univali.interpolacao.EquationCalculator;
-import br.univali.interpolacao.Interpolacao;
+import br.univali.model.gauss.Sistema;
+import br.univali.model.interpolacao.EquationCalculator;
+import br.univali.model.interpolacao.Interpolacao;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import br.univali.minimos_quadrados.MinimosQuadrados;
-import br.univali.minimos_quadrados.Point;
+import br.univali.model.minimos_quadrados.MinimosQuadrados;
+import br.univali.model.minimos_quadrados.Point;
 
 /**
  *
