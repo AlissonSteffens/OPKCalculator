@@ -6,10 +6,11 @@
 package br.univali.questoes;
 
 import br.univali.model.funcoes.Funcao;
-import br.univali.model.infinitesimal.derivada.Derivada;
 import br.univali.model.infinitesimal.derivada.numerica.DerivadaCentrada;
 import br.univali.model.infinitesimal.derivada.numerica.DerivadaInferior;
+import br.univali.model.infinitesimal.derivada.numerica.DerivadaNumerica;
 import br.univali.model.infinitesimal.derivada.numerica.DerivadaSuperior;
+import br.univali.model.util.VerificadordeErro;
 
 /**
  *
@@ -19,13 +20,15 @@ public class QuestoesDerivadas {
     private Double x;
     private Double h;
     private Funcao calculo;
-    private String funcao;
     private Double resposta;
+    private Double erro;
+    DerivadaNumerica derivada;
     
 
-    public QuestoesDerivadas(String funcao, String Tipo, Double x, Double h) {
+    public QuestoesDerivadas(String funcao, String Tipo, Double x, Double h, Double erro) {
         this.x = x;
-        this.h = h;        
+        this.h = h;  
+        this.erro = erro;
         switch(funcao)
         {
             case "sen(lnx)":
@@ -54,36 +57,31 @@ public class QuestoesDerivadas {
                 break;
         }
         switch (Tipo) {
-            case "Centrada":
-                calcularCentrada();
-                break;
-            case "Inferior":
-                calcularInferior();
-                break;
-            default:
-                calcularSuperior();
-                break;
+            case "Centrada":  derivada = new DerivadaCentrada(this.x, this.h, calculo);
+                
+            case "Inferior":  derivada = new DerivadaInferior(this.x, this.h, calculo);
+                
+            default:          derivada = new DerivadaSuperior(this.x, this.h, calculo);
         }
-        
+        calcular();
     }
 
     public Double getResposta() {
         return resposta;
     }
-    public void calcularInferior()
+    public void calcular()
     {
-        Derivada derivadaI = new DerivadaInferior(this.x, this.h, calculo);
-        this.resposta = derivadaI.calcular();
-    }
-    public void calcularSuperior()
-    {
-        Derivada derivadaS = new DerivadaSuperior(this.x, this.h, calculo);
-         this.resposta = derivadaS.calcular();
-    }
-    public void calcularCentrada()
-    {
-        Derivada derivadaC =  new DerivadaCentrada(this.x, this.h, calculo);
-         this.resposta = derivadaC.calcular();
+        Double valorAnterior;
+        Double temp;
+        valorAnterior = derivada.calcular();
+        temp = valorAnterior;
+        do{
+            valorAnterior=temp;
+            h=h/2;
+            derivada.setH(h);
+            temp = derivada.calcular();
+        }while(!VerificadordeErro.verificarErro(valorAnterior, temp, this.erro));
+        this.resposta=temp;
     }
     
 }

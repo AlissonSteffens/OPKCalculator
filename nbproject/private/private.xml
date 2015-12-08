@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/visao/UI.java</file>
-            <file>file:/C:/Users/Alisson/Documents/GitHub/OPKCalculator/src/br/univali/questoes/QuestoesDerivadas.java</file>
+            <file>file:/C:/Users/Adson%20Estevesa/workspace/OPKCalculator/src/br/univali/model/infinitesimal/integral/numerica/IntegralNumerica.java</file>
+            <file>file:/C:/Users/Adson%20Estevesa/workspace/OPKCalculator/src/br/univali/questoes/QuestoesDerivadas.java</file>
+            <file>file:/C:/Users/Adson%20Estevesa/workspace/OPKCalculator/src/br/univali/questoes/QuestoesIntegrais.java</file>
+            <file>file:/C:/Users/Adson%20Estevesa/workspace/OPKCalculator/src/br/univali/testr.java</file>
         </group>
     </open-files>
 </project-private>

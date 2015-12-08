@@ -5,12 +5,8 @@
  */
 package br.univali;
 
-import br.univali.model.infinitesimal.derivada.Derivada;
-import br.univali.model.infinitesimal.derivada.numerica.DerivadaCentrada;
-import br.univali.model.infinitesimal.derivada.numerica.DerivadaInferior;
 import br.univali.model.funcoes.Funcao;
 import br.univali.model.infinitesimal.integral.numerica.IntegralNumerica;
-import br.univali.model.infinitesimal.integral.numerica.simpson.IntegralNumericaSimpsonTreisOitavos;
 import br.univali.model.infinitesimal.integral.numerica.simpson.IntegralNumericaSimpsonUmTerco;
 import br.univali.model.util.VerificadordeErro;
  
