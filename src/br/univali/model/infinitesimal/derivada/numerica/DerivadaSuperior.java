@@ -19,7 +19,7 @@ public class DerivadaSuperior extends DerivadaNumerica{
 
     @Override
     public Double calcular() {
-        return (funcao.calcular(x-h)-funcao.calcular(x))/(h);
+        return (funcao.calcular(x+h)-funcao.calcular(x))/(h);
     }
     
 }
