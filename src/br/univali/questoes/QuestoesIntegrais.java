@@ -62,16 +62,19 @@ public class QuestoesIntegrais {
                 pontos=4;
                 integral = new IntegralNumericaSimpsonTreisOitavos(pontos, this.xInicial, this.xFinal, this.funcao);
                 incremento=3;
+                break;
                 
             case "Simpson 1/3":
                 pontos=3;
                 integral = new IntegralNumericaSimpsonUmTerco(pontos, this.xInicial, this.xFinal, this.funcao);
                 incremento = 2;
+                break;
                 
-            default:
+            case "Trapézio":
                 pontos=2;
                 integral =  new IntegralNumericaTrapezeio(pontos, this.xInicial, this.xFinal, this.funcao);
                 incremento = 1;
+                break;
         }
         calcular();
     }

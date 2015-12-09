@@ -59,11 +59,11 @@ public class QuestoesDerivadas {
                 break;
         }
         switch (Tipo) {
-            case "Centrada":  derivada = new DerivadaCentrada(this.x, this.h, this.funcao);
+            case "Centrada":  derivada = new DerivadaCentrada(this.x, this.h, this.funcao); break;
                 
-            case "Inferior":  derivada = new DerivadaInferior(this.x, this.h, this.funcao);
+            case "Inferior":  derivada = new DerivadaInferior(this.x, this.h, this.funcao); break;
                 
-            default:          derivada = new DerivadaSuperior(this.x, this.h, this.funcao);
+            default:          derivada = new DerivadaSuperior(this.x, this.h, this.funcao); break;
         }
         calcular();
     }

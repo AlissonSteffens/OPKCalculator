@@ -67,12 +67,15 @@ public class QuestoesDiferencial {
         {
             case "Euler" :
                 this.metododeEuler = new EquacaoDiferencialMetododeEuler(this.y0, this.funcao, this.h, this.xInicial, this.xFinal);
+                break;
             
             case "Euler Modificado" : 
                 this.metododeEuler =  new EquacaoDiferencialMetododeEulerModificado(this.y0, this.funcao, this.h, this.xInicial, this.xFinal);
+                break;
             
             case "Euler Melhorado" :
                 this.metododeEuler =  new EquacaoDiferencialMetododeEulerMelhorado(this.y0, this.funcao, this.h, this.xInicial, this.xFinal);
+                break;
         }
         calcular();
     }
