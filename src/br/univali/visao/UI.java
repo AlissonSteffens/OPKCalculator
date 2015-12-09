@@ -47,18 +47,29 @@ public class UI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedGauss = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        tamanhoMatrizAmpliada = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaMatriz = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
         calcularGauss = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         areaMatrizEscalonada = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        tamanhoMatrizAmpliada = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        vetorSolucao = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        vetorSolucao = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         xzesMMQ = new javax.swing.JTextField();
@@ -137,6 +148,9 @@ public class UI extends javax.swing.JFrame {
         jfuncaodiferencial = new javax.swing.JComboBox();
         jLabel27 = new javax.swing.JLabel();
         valorheuler = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -146,11 +160,60 @@ public class UI extends javax.swing.JFrame {
         setTitle("Omega Power & Knuckles Calculator");
         setLocationByPlatform(true);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        jPanel2.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel17.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel13.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel10.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel9.setPreferredSize(new java.awt.Dimension(1020, 25));
+        jPanel9.setLayout(new java.awt.BorderLayout(4, 4));
+
+        tamanhoMatrizAmpliada.setMinimumSize(new java.awt.Dimension(400, 20));
+        tamanhoMatrizAmpliada.setPreferredSize(new java.awt.Dimension(250, 20));
+        jPanel9.add(tamanhoMatrizAmpliada, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setText("Digite o tamanho do Sistema");
+        jPanel9.add(jLabel1, java.awt.BorderLayout.WEST);
+
+        jPanel10.add(jPanel9, java.awt.BorderLayout.NORTH);
+
+        jPanel11.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jLabel3.setText("Entre com a Matriz Ampliada, separando as posições com espaços");
+        jPanel11.add(jLabel3, java.awt.BorderLayout.NORTH);
+
         areaMatriz.setColumns(20);
         areaMatriz.setRows(5);
         jScrollPane1.setViewportView(areaMatriz);
 
-        jLabel1.setText("Digite o tamanho do Sistema");
+        jPanel11.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel10.add(jPanel11, java.awt.BorderLayout.CENTER);
+
+        jPanel13.add(jPanel10, java.awt.BorderLayout.CENTER);
+
+        jPanel12.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel18.setPreferredSize(new java.awt.Dimension(800, 0));
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel12.add(jPanel18, java.awt.BorderLayout.CENTER);
+
+        jPanel19.setLayout(new java.awt.BorderLayout());
 
         calcularGauss.setText("Calcular");
         calcularGauss.addActionListener(new java.awt.event.ActionListener() {
@@ -158,81 +221,54 @@ public class UI extends javax.swing.JFrame {
                 calcularGaussActionPerformed(evt);
             }
         });
+        jPanel19.add(calcularGauss, java.awt.BorderLayout.WEST);
 
-        areaMatrizEscalonada.setColumns(20);
-        areaMatrizEscalonada.setRows(5);
-        jScrollPane3.setViewportView(areaMatrizEscalonada);
-
-        jLabel2.setText("Matriz ampliada escalonada e resposta");
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/resources/interrogation.png"))); // NOI18N
+        jButton1.setText("Ajuda Lucisno");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel19.add(jButton1, java.awt.BorderLayout.EAST);
 
-        jLabel3.setText("Entre com a Matriz Ampliada, separando as posições com espaços");
+        jPanel12.add(jPanel19, java.awt.BorderLayout.EAST);
+
+        jPanel13.add(jPanel12, java.awt.BorderLayout.SOUTH);
+
+        jPanel17.add(jPanel13, java.awt.BorderLayout.NORTH);
+
+        jPanel16.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel14.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jLabel2.setText("Matriz ampliada escalonada e resposta");
+        jPanel14.add(jLabel2, java.awt.BorderLayout.NORTH);
+
+        areaMatrizEscalonada.setColumns(20);
+        areaMatrizEscalonada.setRows(5);
+        jScrollPane3.setViewportView(areaMatrizEscalonada);
+
+        jPanel14.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jPanel16.add(jPanel14, java.awt.BorderLayout.CENTER);
+
+        jPanel15.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jLabel11.setText("Vetor Solução");
+        jPanel15.add(jLabel11, java.awt.BorderLayout.NORTH);
 
         vetorSolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vetorSolucaoActionPerformed(evt);
             }
         });
+        jPanel15.add(vetorSolucao, java.awt.BorderLayout.SOUTH);
 
-        jLabel11.setText("Vetor Solução");
+        jPanel16.add(jPanel15, java.awt.BorderLayout.SOUTH);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vetorSolucao, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(calcularGauss)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tamanhoMatrizAmpliada, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel11))
-                        .addGap(0, 620, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tamanhoMatrizAmpliada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(calcularGauss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vetorSolucao, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel17.add(jPanel16, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(jPanel17, java.awt.BorderLayout.CENTER);
 
         jTabbedGauss.addTab("Metodo de Gauss", jPanel2);
 
@@ -307,7 +343,7 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -401,7 +437,7 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tipoFuncaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -428,7 +464,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(jLabel10))
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -507,7 +543,7 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(valorX, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                        .addComponent(valorX, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -609,7 +645,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(taxaErro1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(xInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -745,7 +781,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(jButton12))
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -755,12 +791,20 @@ public class UI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedGauss, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
+            .addComponent(jTabbedGauss, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedGauss)
         );
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1096,7 +1140,20 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1104,6 +1161,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
