@@ -114,7 +114,7 @@
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="459" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="462" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -267,7 +267,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton6" min="-2" pref="132" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton3" pref="87" max="32767" attributes="0"/>
+                                  <Component id="jButton3" pref="90" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButton2" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
@@ -439,7 +439,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="tipoFuncaoInterpolacao" min="-2" pref="357" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jToggleButton1" pref="196" max="32767" attributes="0"/>
+                                  <Component id="jToggleButton1" pref="199" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -570,9 +570,11 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jScrollPane6" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoFuncao" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jfuncaoderivada" min="-2" pref="720" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -581,7 +583,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="taxaErro" pref="39" max="32767" attributes="0"/>
+                                  <Component id="taxaErro" pref="42" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -611,10 +613,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="jfuncaoderivada" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tipoDerivada" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -633,7 +635,7 @@
                               <Component id="jButton7" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="288" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="286" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -644,8 +646,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="f(x)"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="campoFuncao">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
@@ -712,7 +712,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                    <Component class="javax.swing.JTextArea" name="respostaDerivadaArea">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
@@ -725,6 +725,17 @@
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="H inicial"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jfuncaoderivada">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="sen(lnx)"/>
+                        <StringItem index="1" value="tan(x).cos(x)"/>
+                        <StringItem index="2" value="3&#x221a;e^secx"/>
+                      </StringArray>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -745,31 +756,35 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jScrollPane7" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoFuncao1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tipoDerivada1" min="-2" pref="127" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="taxaErro1" pref="60" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="xInicial1" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="xFinal1" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                                  <Component id="jButton10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jfuncaointegral" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="tipointegral1" min="-2" pref="127" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="taxaErro1" pref="63" max="32767" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="xInicial1" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="xFinal1" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jButton9" min="-2" pref="26" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -783,7 +798,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoFuncao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jfuncaointegral" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -797,7 +812,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tipoDerivada1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tipointegral1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="taxaErro1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -820,14 +835,12 @@
                     <Property name="text" type="java.lang.String" value="f(x)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campoFuncao1">
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel19">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tipo de Integral"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="tipoDerivada1">
+                <Component class="javax.swing.JComboBox" name="tipointegral1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -880,7 +893,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea3">
+                    <Component class="javax.swing.JTextArea" name="respostaIntegralArea">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
@@ -893,6 +906,17 @@
                 <Component class="javax.swing.JLabel" name="jLabel23">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ponto Inicial"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jfuncaointegral">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="arcsen(3&#x221a;x)"/>
+                        <StringItem index="1" value="cotan(x)+x^e"/>
+                        <StringItem index="2" value="&#x221a;PIx"/>
+                      </StringArray>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -915,17 +939,17 @@
                               <Component id="jScrollPane8" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoFuncao2" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jfuncaodiferencial" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tipoDerivada2" min="-2" pref="127" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tipoDiferencial" min="-2" pref="127" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="taxaErro2" pref="24" max="32767" attributes="0"/>
+                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="valorheuler" min="-2" pref="75" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -937,13 +961,9 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="yInicial" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="valorX1" min="-2" pref="156" max="-2" attributes="0"/>
+                                  <Component id="valory0" min="-2" pref="156" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField1" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton11" min="-2" pref="25" max="-2" attributes="0"/>
@@ -959,28 +979,24 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoFuncao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jfuncaodiferencial" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tipoDerivada2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="taxaErro2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tipoDiferencial" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="xFinal2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="yInicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="valorX1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="valory0" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="xInicial2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="valorheuler" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jButton12" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jButton12" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton11" alignment="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -996,14 +1012,12 @@
                     <Property name="text" type="java.lang.String" value="y&apos;="/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campoFuncao2">
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tipo de Metodo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="tipoDerivada2">
+                <Component class="javax.swing.JComboBox" name="tipoDiferencial">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -1013,16 +1027,6 @@
                       </StringArray>
                     </Property>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Erro: 10^-"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="taxaErro2">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taxaErro2ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel26">
                   <Properties>
@@ -1036,7 +1040,7 @@
                     <Property name="text" type="java.lang.String" value="y(0) ="/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="valorX1">
+                <Component class="javax.swing.JTextField" name="valory0">
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton11">
                   <Properties>
@@ -1063,7 +1067,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea4">
+                    <Component class="javax.swing.JTextArea" name="respostaDiferencialArea">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
@@ -1078,15 +1082,23 @@
                     <Property name="text" type="java.lang.String" value="Ponto Inicial"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
+                <Component class="javax.swing.JComboBox" name="jfuncaodiferencial">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Incremento h ="/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="y-x"/>
+                        <StringItem index="1" value="2x^3-2xy"/>
+                        <StringItem index="2" value="y+x^(3/2)"/>
+                      </StringArray>
+                    </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-                  </Events>
+                <Component class="javax.swing.JLabel" name="jLabel27">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="h ="/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="valorheuler">
                 </Component>
               </SubComponents>
             </Container>

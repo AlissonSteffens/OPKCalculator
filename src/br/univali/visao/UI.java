@@ -15,6 +15,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import br.univali.model.minimos_quadrados.MinimosQuadrados;
 import br.univali.model.minimos_quadrados.Point;
+import br.univali.questoes.QuestoesDerivadas;
+import br.univali.questoes.QuestoesDiferencial;
+import br.univali.questoes.QuestoesIntegrais;
 
 /**
  *
@@ -86,7 +89,6 @@ public class UI extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        campoFuncao = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         tipoDerivada = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
@@ -98,14 +100,14 @@ public class UI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        respostaDerivadaArea = new javax.swing.JTextArea();
         hInicial = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jfuncaoderivada = new javax.swing.JComboBox();
         jPanel6 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        campoFuncao1 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        tipoDerivada1 = new javax.swing.JComboBox();
+        tipointegral1 = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
         taxaErro1 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -113,28 +115,27 @@ public class UI extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        respostaIntegralArea = new javax.swing.JTextArea();
         xInicial1 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        jfuncaointegral = new javax.swing.JComboBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        campoFuncao2 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        tipoDerivada2 = new javax.swing.JComboBox();
-        jLabel25 = new javax.swing.JLabel();
-        taxaErro2 = new javax.swing.JTextField();
+        tipoDiferencial = new javax.swing.JComboBox();
         jLabel26 = new javax.swing.JLabel();
         xFinal2 = new javax.swing.JTextField();
         yInicial = new javax.swing.JLabel();
-        valorX1 = new javax.swing.JTextField();
+        valory0 = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        respostaDiferencialArea = new javax.swing.JTextArea();
         xInicial2 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
+        jfuncaodiferencial = new javax.swing.JComboBox();
         jLabel27 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        valorheuler = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -204,7 +205,7 @@ public class UI extends javax.swing.JFrame {
                                 .addComponent(tamanhoMatrizAmpliada, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3)
                             .addComponent(jLabel11))
-                        .addGap(0, 459, Short.MAX_VALUE)))
+                        .addGap(0, 462, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -305,7 +306,7 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -399,7 +400,7 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tipoFuncaoInterpolacao, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -464,11 +465,13 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane6.setViewportView(jTextArea2);
+        respostaDerivadaArea.setColumns(20);
+        respostaDerivadaArea.setRows(5);
+        jScrollPane6.setViewportView(respostaDerivadaArea);
 
         jLabel17.setText("H inicial");
+
+        jfuncaoderivada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "sen(lnx)", "tan(x).cos(x)", "3√e^secx" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -479,9 +482,11 @@ public class UI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane6)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoFuncao))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jfuncaoderivada, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -489,7 +494,7 @@ public class UI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(taxaErro, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                        .addComponent(taxaErro, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -514,9 +519,9 @@ public class UI extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(campoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jfuncaoderivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(tipoDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -533,7 +538,7 @@ public class UI extends javax.swing.JFrame {
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -543,7 +548,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel19.setText("Tipo de Integral");
 
-        tipoDerivada1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simpson 1/3", "Simpson 3/8", "Trapézio" }));
+        tipointegral1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simpson 1/3", "Simpson 3/8", "Trapézio" }));
 
         jLabel20.setText("Erro: 10^-");
 
@@ -569,11 +574,13 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane7.setViewportView(jTextArea3);
+        respostaIntegralArea.setColumns(20);
+        respostaIntegralArea.setRows(5);
+        jScrollPane7.setViewportView(respostaIntegralArea);
 
         jLabel23.setText("Ponto Inicial");
+
+        jfuncaointegral.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "arcsen(3√x)", "cotan(x)+x^e", "√PIx" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -583,30 +590,32 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane7)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoFuncao1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipoDerivada1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(taxaErro1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xFinal1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jfuncaointegral, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tipointegral1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(taxaErro1, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(xInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(xFinal1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92)
+                                .addComponent(jButton10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(8, 8, 8)))
                 .addContainerGap())
         );
@@ -616,7 +625,7 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(campoFuncao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jfuncaointegral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -627,7 +636,7 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
-                            .addComponent(tipoDerivada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipointegral1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20)
                             .addComponent(taxaErro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21)
@@ -645,15 +654,7 @@ public class UI extends javax.swing.JFrame {
 
         jLabel24.setText("Tipo de Metodo");
 
-        tipoDerivada2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Euler", "Euler Modificado", "Euler Melhorado" }));
-
-        jLabel25.setText("Erro: 10^-");
-
-        taxaErro2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taxaErro2ActionPerformed(evt);
-            }
-        });
+        tipoDiferencial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Euler", "Euler Modificado", "Euler Melhorado" }));
 
         jLabel26.setText("Ponto Final");
 
@@ -673,19 +674,15 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane8.setViewportView(jTextArea4);
+        respostaDiferencialArea.setColumns(20);
+        respostaDiferencialArea.setRows(5);
+        jScrollPane8.setViewportView(respostaDiferencialArea);
 
         jLabel28.setText("Ponto Inicial");
 
-        jLabel27.setText("Incremento h =");
+        jfuncaodiferencial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "y-x", "2x^3-2xy", "y+x^(3/2)" }));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        jLabel27.setText("h =");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -697,16 +694,16 @@ public class UI extends javax.swing.JFrame {
                     .addComponent(jScrollPane8)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoFuncao2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jfuncaodiferencial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipoDerivada2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel25)
+                        .addComponent(tipoDiferencial, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(taxaErro2, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(valorheuler, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -718,12 +715,8 @@ public class UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(yInicial)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(valorX1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(valory0, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -735,25 +728,22 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(campoFuncao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jfuncaodiferencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(tipoDerivada2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25)
-                    .addComponent(taxaErro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoDiferencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
                     .addComponent(xFinal2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yInicial)
-                    .addComponent(valorX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valory0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xInicial2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28))
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel27)
+                    .addComponent(valorheuler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel27)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton12)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
@@ -944,15 +934,26 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_taxaErroActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        campoFuncao.setText("sen(lnx)");
+        switch (jfuncaoderivada.getSelectedItem().toString()) {
+            case "sen(lnx)":
+                valorX.setText("0.42");
+                break;
+            case "tan(x).cos(x)":
+                valorX.setText("0.39");
+                break;
+            case "3√e^secx":
+                valorX.setText("0.69");
+                break;
+        }
         taxaErro.setText("5");
-        hInicial.setText("0,1");
-        taxaIncremento.setText("5");
-        valorX.setText("0,42");
+        hInicial.setText("1");
+        taxaIncremento.setText("2");
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        if(tipoDerivada.equals("Superior"));
+        QuestoesDerivadas questoesDerivadas = new QuestoesDerivadas(jfuncaoderivada.getSelectedItem().toString(), tipoDerivada.getSelectedItem().toString(), Integer.parseInt(taxaIncremento.getText()), Double.parseDouble(valorX.getText()), Double.parseDouble(hInicial.getText()), Math.pow(10, Double.parseDouble(taxaErro.getText())));
+        respostaDerivadaArea.setText(questoesDerivadas.getResposta().toString());
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void taxaErro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxaErro1ActionPerformed
@@ -960,28 +961,60 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_taxaErro1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        switch (jfuncaointegral.getSelectedItem().toString()) {
+            case "arcsen(3√x)":
+                xInicial1.setText("0.0");
+                xFinal1.setText("0.24");
+                break;
+            case "cotan(x)+x^e":
+                xInicial1.setText("0.5");
+                xFinal1.setText("1.5");  
+                break;
+            case "√PIx":
+                xInicial1.setText("0.3");
+                xFinal1.setText("3.0");
+                break;
+        }
+        taxaErro1.setText("5");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        QuestoesIntegrais questoesIntegrais =  new QuestoesIntegrais(Double.parseDouble(xInicial1.getText()), Double.parseDouble(xFinal1.getText()), tipointegral1.getSelectedItem().toString(), jfuncaointegral.getSelectedItem().toString(), Double.parseDouble(taxaErro1.getText()));
+        respostaIntegralArea.setText(questoesIntegrais.getResposta().toString());
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void taxaErro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxaErro2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_taxaErro2ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        switch (jfuncaodiferencial.getSelectedItem().toString()) {
+            case "y-x":
+                xInicial2.setText("0.0");
+                xFinal2.setText("4.0");
+                valory0.setText("2");
+                valorheuler.setText("0.2");
+                break;
+            case "2x^3-2xy":
+                xInicial2.setText("0.0");
+                xFinal2.setText("3.0");  
+                valory0.setText("2");
+                valorheuler.setText("0.15");
+                break;
+            case "y+x^(3/2)":
+                xInicial2.setText("0.0");
+                xFinal2.setText("2.0");
+                valory0.setText("1");
+                valorheuler.setText("0.1");
+                break;
+        }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        QuestoesDiferencial questoesDiferencial =new QuestoesDiferencial(jfuncaodiferencial.getSelectedItem().toString(), tipoDiferencial.getSelectedItem().toString(), Double.parseDouble(valory0.getText()), Double.parseDouble(valorheuler.getText()), Double.parseDouble(xInicial2.getText()), Double.parseDouble(xFinal2.getText()));
+        String pontos = "";
+        List<Point> points = questoesDiferencial.getResposta();
+        for (Point point : points) {
+            pontos+=point.toString()+"\n";
+        }
+        respostaDiferencialArea.setText(pontos);
     }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
     
     private void erroComentario()
     {
@@ -1023,9 +1056,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTextArea areaMatriz;
     private javax.swing.JTextArea areaMatrizEscalonada;
     private javax.swing.JButton calcularGauss;
-    private javax.swing.JTextField campoFuncao;
-    private javax.swing.JTextField campoFuncao1;
-    private javax.swing.JTextField campoFuncao2;
     private javax.swing.JLabel grauLabel;
     private javax.swing.JTextField grauPolinomio;
     private javax.swing.JTextField hInicial;
@@ -1058,7 +1088,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1086,24 +1115,26 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedGauss;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JComboBox jfuncaoderivada;
+    private javax.swing.JComboBox jfuncaodiferencial;
+    private javax.swing.JComboBox jfuncaointegral;
     private javax.swing.JTextField mMQFuncaoAproximada;
+    private javax.swing.JTextArea respostaDerivadaArea;
+    private javax.swing.JTextArea respostaDiferencialArea;
+    private javax.swing.JTextArea respostaIntegralArea;
     private javax.swing.JTextField tamanhoMatrizAmpliada;
     private javax.swing.JTextField taxaErro;
     private javax.swing.JTextField taxaErro1;
-    private javax.swing.JTextField taxaErro2;
     private javax.swing.JTextField taxaIncremento;
     private javax.swing.JComboBox tipoDerivada;
-    private javax.swing.JComboBox tipoDerivada1;
-    private javax.swing.JComboBox tipoDerivada2;
+    private javax.swing.JComboBox tipoDiferencial;
     private javax.swing.JComboBox tipoFunacaoAproximacao;
     private javax.swing.JComboBox tipoFuncaoInterpolacao;
+    private javax.swing.JComboBox tipointegral1;
     private javax.swing.JTextField valorX;
-    private javax.swing.JTextField valorX1;
+    private javax.swing.JTextField valorheuler;
+    private javax.swing.JTextField valory0;
     private javax.swing.JTextField vetorSolucao;
     private javax.swing.JTextField xFinal1;
     private javax.swing.JTextField xFinal2;

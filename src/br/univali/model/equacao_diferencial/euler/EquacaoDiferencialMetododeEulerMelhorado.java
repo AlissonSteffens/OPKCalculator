@@ -32,7 +32,6 @@ public class EquacaoDiferencialMetododeEulerMelhorado extends MetododeEuler{
             Double K1 = funcao.calcular(i-h, points.get(j).getY());
             Double K2 = funcao.calcular(i, points.get(j).getY()+(h*K1));
             Double y=points.get(j).getY()+(h*(K1+K2)/2);
-            System.out.println(i);
             points.add(new Point(i, y));
             j++;
         }

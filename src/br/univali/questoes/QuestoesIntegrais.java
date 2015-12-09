@@ -19,29 +19,29 @@ import br.univali.model.util.VerificadordeErro;
 public class QuestoesIntegrais {
     private Double xInicial;
     private Double xFinal;
-    private Double h;
     private Double resposta;
-    private Funcao calculo;
+    private Funcao funcao;
     private Double erro;
+    private int pontos;
+    private int incremento;
     IntegralNumerica integral;
 
-    public QuestoesIntegrais(Double xInicial, Double xFinal, Double h, String Tipo, String funcao, Double erro) {
+    public QuestoesIntegrais(Double xInicial, Double xFinal, String Tipo, String funcao, Double erro) {
         this.xInicial = xInicial;
         this.xFinal = xFinal;
-        this.h = h;
         this.erro = erro;
         switch(funcao)
         {
             case "arcsen(3√x)":
-                calculo = new Funcao() {
+                this.funcao = new Funcao() {
                         @Override
                         public Double calcular(Double x) {
                             return Math.asin(Math.cbrt(x));
                         }
                     };
                 break;
-            case " cotan x + x^e ":
-                calculo = new Funcao() {
+            case "cotan(x)+x^e":
+                this.funcao = new Funcao() {
                         @Override
                         public Double calcular(Double x) {
                             return 1/Math.tan(x) + Math.pow(x, Math.E);
@@ -49,7 +49,7 @@ public class QuestoesIntegrais {
                     };
                 break;
             case "√PIx":
-                calculo= new Funcao() {
+                this.funcao= new Funcao() {
                         @Override
                         public Double calcular(Double x) {
                             return Math.sqrt(x*Math.PI);
@@ -58,11 +58,20 @@ public class QuestoesIntegrais {
                 break;
         }
         switch (Tipo) {
-            case "Simpson 3/8":  integral = new IntegralNumericaSimpsonTreisOitavos(4, this.xInicial, this.xFinal, calculo);
+            case "Simpson 3/8":
+                pontos=4;
+                integral = new IntegralNumericaSimpsonTreisOitavos(pontos, this.xInicial, this.xFinal, this.funcao);
+                incremento=3;
                 
-            case "Simpson 1/3":  integral = new IntegralNumericaSimpsonUmTerco(3, this.xInicial, this.xFinal, calculo);
+            case "Simpson 1/3":
+                pontos=3;
+                integral = new IntegralNumericaSimpsonUmTerco(pontos, this.xInicial, this.xFinal, this.funcao);
+                incremento = 2;
                 
-            default:             integral =  new IntegralNumericaTrapezeio(2, this.xInicial, this.xFinal, calculo);
+            default:
+                pontos=2;
+                integral =  new IntegralNumericaTrapezeio(pontos, this.xInicial, this.xFinal, this.funcao);
+                incremento = 1;
         }
         calcular();
     }
@@ -76,10 +85,14 @@ public class QuestoesIntegrais {
         temp = valorAnterior;
         do{
             valorAnterior=temp;
-            pontos+=2;
+            pontos+=incremento;
             integral.setPontos(pontos);
             temp = integral.calcular();
         }while(!VerificadordeErro.verificarErro(valorAnterior, temp, this.erro));
         this.resposta=temp;
+    }
+
+    public Double getResposta() {
+        return resposta;
     }
 }

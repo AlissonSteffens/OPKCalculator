@@ -19,20 +19,22 @@ import br.univali.model.util.VerificadordeErro;
 public class QuestoesDerivadas {
     private Double x;
     private Double h;
-    private Funcao calculo;
+    private Funcao funcao;
     private Double resposta;
+    private int incremento;
     private Double erro;
     DerivadaNumerica derivada;
     
 
-    public QuestoesDerivadas(String funcao, String Tipo, Double x, Double h, Double erro) {
+    public QuestoesDerivadas(String funcao, String Tipo, int incremento,  Double x, Double h, Double erro) {
         this.x = x;
         this.h = h;  
         this.erro = erro;
+        this.incremento = incremento;
         switch(funcao)
         {
             case "sen(lnx)":
-                calculo = new Funcao() {
+                this.funcao = new Funcao() {
                         @Override
                         public Double calcular(Double x) {
                             return Math.cbrt(Math.exp(1/Math.cos(x)));
@@ -40,15 +42,15 @@ public class QuestoesDerivadas {
                     };
                 break;
             case "tan(x).cos(x)":
-                calculo = new Funcao() {
+                this.funcao = new Funcao() {
                         @Override
                         public Double calcular(Double x) {
                             return Math.tan(x)*Math.cos(x);
                         }
                     };
                 break;
-            case " 3√e^secx ":
-                calculo= new Funcao() {
+            case "3√e^secx":
+                this.funcao= new Funcao() {
                         @Override
                         public Double calcular(Double x) {
                             return Math.sin(Math.log(x));
@@ -57,11 +59,11 @@ public class QuestoesDerivadas {
                 break;
         }
         switch (Tipo) {
-            case "Centrada":  derivada = new DerivadaCentrada(this.x, this.h, calculo);
+            case "Centrada":  derivada = new DerivadaCentrada(this.x, this.h, this.funcao);
                 
-            case "Inferior":  derivada = new DerivadaInferior(this.x, this.h, calculo);
+            case "Inferior":  derivada = new DerivadaInferior(this.x, this.h, this.funcao);
                 
-            default:          derivada = new DerivadaSuperior(this.x, this.h, calculo);
+            default:          derivada = new DerivadaSuperior(this.x, this.h, this.funcao);
         }
         calcular();
     }
@@ -77,7 +79,7 @@ public class QuestoesDerivadas {
         temp = valorAnterior;
         do{
             valorAnterior=temp;
-            h=h/2;
+            h=h/incremento;
             derivada.setH(h);
             temp = derivada.calcular();
         }while(!VerificadordeErro.verificarErro(valorAnterior, temp, this.erro));
