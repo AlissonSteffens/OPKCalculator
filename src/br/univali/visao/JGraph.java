@@ -65,9 +65,9 @@ public class JGraph {
          Gson gson= new GsonBuilder().setPrettyPrinting().create();
          String code = gson.toJson(map1);
          
-         String html=lerHtml("./src/template/template.html");
+         String html=lerHtml("./src/br/univali/template/template.html");
          
-         File pastaTemp = new File("./src/template");
+         File pastaTemp = new File("./src/br/univali/template");
          File arquivoHtml = getRelatorio();
          File arquivoLog = getJsLog();
          
