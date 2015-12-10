@@ -782,7 +782,6 @@ public class UI extends javax.swing.JFrame {
         jPanel64.setPreferredSize(new java.awt.Dimension(10, 25));
         jPanel64.setLayout(new java.awt.BorderLayout(4, 4));
 
-        jPanel68.setPreferredSize(null);
         jPanel68.setLayout(new java.awt.BorderLayout(4, 4));
 
         jPanel60.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -1042,8 +1041,13 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        QuestoesIntegrais questoesIntegrais =  new QuestoesIntegrais(Double.parseDouble(xInicial1.getText()), Double.parseDouble(xFinal1.getText()), tipointegral1.getSelectedItem().toString(), jfuncaointegral.getSelectedItem().toString(), Double.parseDouble(taxaErro1.getText()));
-        respostaIntegralArea.setText(questoesIntegrais.getResposta().toString());
+        QuestoesIntegrais questoesIntegrais =  new QuestoesIntegrais(Double.parseDouble(xInicial1.getText()), Double.parseDouble(xFinal1.getText()), tipointegral1.getSelectedItem().toString(), jfuncaointegral.getSelectedItem().toString(), Math.pow(10, -Double.parseDouble(taxaErro1.getText())));
+        String respostas = "";
+        List<Double> resposta = questoesIntegrais.getResposta();
+        for (Double valor : resposta) {
+            respostas+=valor.toString()+"\n";
+        }
+        respostaIntegralArea.setText(respostas);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -1101,8 +1105,13 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        QuestoesDerivadas questoesDerivadas = new QuestoesDerivadas(jfuncaoderivada.getSelectedItem().toString(), tipoDerivada.getSelectedItem().toString(), Integer.parseInt(taxaIncremento.getText()), Double.parseDouble(valorX.getText()), Double.parseDouble(hInicial.getText()), Math.pow(10, Double.parseDouble(taxaErro.getText())));
-        respostaDerivadaArea.setText(questoesDerivadas.getResposta().toString());
+        QuestoesDerivadas questoesDerivadas = new QuestoesDerivadas(jfuncaoderivada.getSelectedItem().toString(), tipoDerivada.getSelectedItem().toString(), Integer.parseInt(taxaIncremento.getText()), Double.parseDouble(valorX.getText()), Double.parseDouble(hInicial.getText()), Math.pow(10, -Double.parseDouble(taxaErro.getText())));
+        String respostas = "";
+        List<Double> resposta = questoesDerivadas.getResposta();
+        for (Double point : resposta) {
+            respostas+=point.toString()+"\n";
+        }
+        respostaDerivadaArea.setText(respostas);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void hInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hInicialActionPerformed

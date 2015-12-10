@@ -11,6 +11,8 @@ import br.univali.model.infinitesimal.integral.numerica.simpson.IntegralNumerica
 import br.univali.model.infinitesimal.integral.numerica.simpson.IntegralNumericaSimpsonUmTerco;
 import br.univali.model.infinitesimal.integral.numerica.trapezio.IntegralNumericaTrapezeio;
 import br.univali.model.util.VerificadordeErro;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,7 +21,7 @@ import br.univali.model.util.VerificadordeErro;
 public class QuestoesIntegrais {
     private Double xInicial;
     private Double xFinal;
-    private Double resposta;
+    private List<Double> resposta;
     private Funcao funcao;
     private Double erro;
     private int pontos;
@@ -76,6 +78,7 @@ public class QuestoesIntegrais {
                 incremento = 1;
                 break;
         }
+        this.resposta=new ArrayList<>();
         calcular();
     }
     
@@ -85,17 +88,19 @@ public class QuestoesIntegrais {
         Double temp;
         
         valorAnterior = integral.calcular();
+        resposta.add(valorAnterior);
         temp = valorAnterior;
         do{
             valorAnterior=temp;
             pontos+=incremento;
             integral.setPontos(pontos);
             temp = integral.calcular();
+            resposta.add(temp);
         }while(!VerificadordeErro.verificarErro(valorAnterior, temp, this.erro));
-        this.resposta=temp;
+
     }
 
-    public Double getResposta() {
+    public List<Double> getResposta() {
         return resposta;
     }
 }

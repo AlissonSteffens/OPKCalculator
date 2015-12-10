@@ -11,6 +11,8 @@ import br.univali.model.infinitesimal.derivada.numerica.DerivadaInferior;
 import br.univali.model.infinitesimal.derivada.numerica.DerivadaNumerica;
 import br.univali.model.infinitesimal.derivada.numerica.DerivadaSuperior;
 import br.univali.model.util.VerificadordeErro;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,7 @@ public class QuestoesDerivadas {
     private Double x;
     private Double h;
     private Funcao funcao;
-    private Double resposta;
+    private List<Double> resposta;
     private int incremento;
     private Double erro;
     DerivadaNumerica derivada;
@@ -65,10 +67,11 @@ public class QuestoesDerivadas {
                 
             default:          derivada = new DerivadaSuperior(this.x, this.h, this.funcao); break;
         }
+        this.resposta = new ArrayList<>();
         calcular();
     }
 
-    public Double getResposta() {
+    public List<Double> getResposta() {
         return resposta;
     }
     public void calcular()
@@ -76,14 +79,15 @@ public class QuestoesDerivadas {
         Double valorAnterior;
         Double temp;
         valorAnterior = derivada.calcular();
+        resposta.add(valorAnterior);
         temp = valorAnterior;
         do{
             valorAnterior=temp;
             h=h/incremento;
             derivada.setH(h);
             temp = derivada.calcular();
+            resposta.add(temp);
         }while(!VerificadordeErro.verificarErro(valorAnterior, temp, this.erro));
-        this.resposta=temp;
     }
     
 }
