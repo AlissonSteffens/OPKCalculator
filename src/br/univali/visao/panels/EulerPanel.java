@@ -31,8 +31,6 @@ public class EulerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane8 = new javax.swing.JScrollPane();
-        respostaDiferencialArea = new javax.swing.JTextArea();
         jPanel67 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -60,15 +58,14 @@ public class EulerPanel extends javax.swing.JPanel {
         jPanel61 = new javax.swing.JPanel();
         yInicial = new javax.swing.JLabel();
         valory0 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        respx = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        respy = new javax.swing.JTextArea();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
         setLayout(new java.awt.BorderLayout(4, 4));
-
-        respostaDiferencialArea.setColumns(20);
-        respostaDiferencialArea.setRows(5);
-        jScrollPane8.setViewportView(respostaDiferencialArea);
-
-        add(jScrollPane8, java.awt.BorderLayout.CENTER);
 
         jPanel67.setLayout(new java.awt.BorderLayout(4, 4));
 
@@ -188,16 +185,35 @@ public class EulerPanel extends javax.swing.JPanel {
         jPanel67.add(jPanel63, java.awt.BorderLayout.SOUTH);
 
         add(jPanel67, java.awt.BorderLayout.NORTH);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        respx.setColumns(20);
+        respx.setRows(5);
+        jScrollPane1.setViewportView(respx);
+
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
+
+        respy.setColumns(20);
+        respy.setRows(5);
+        jScrollPane8.setViewportView(respy);
+
+        jPanel1.add(jScrollPane8, java.awt.BorderLayout.LINE_END);
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         QuestoesDiferencial questoesDiferencial =new QuestoesDiferencial(jfuncaodiferencial.getSelectedItem().toString(), tipoDiferencial.getSelectedItem().toString(), Double.parseDouble(valory0.getText()), Double.parseDouble(valorheuler.getText()), Double.parseDouble(xInicial2.getText()), Double.parseDouble(xFinal2.getText()));
-        String pontos = "";
+        String pontosx = "";
+        String pontosy = "";
         List<Point> points = questoesDiferencial.getResposta();
         for (Point point : points) {
-            pontos+=point.toString()+"\n";
+            pontosx+=point.getX()+"\n";
+            pontosy+=point.getY()+"\n";
         }
-        respostaDiferencialArea.setText(pontos);
+        respx.setText(pontosx);
+        respy.setText(pontosy);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -230,7 +246,19 @@ public class EulerPanel extends javax.swing.JPanel {
     private void valory0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valory0ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valory0ActionPerformed
-
+    @Override
+    public String toString() {
+        String out  = "";
+        out+= "Equação: "+jfuncaodiferencial.getSelectedItem().toString();
+        out+= "\nh: "+ valorheuler.getText();
+        out+= "\nX inicial: "+ xInicial2.getText();
+        out+= "\nX final: "+ xFinal2.getText();
+        out+= "\nY0: "+ valory0.getText();
+        out+= "\nMétodo: "+ tipoDiferencial.getSelectedItem().toString();
+        out+= "\nPontos: \n"+"X: \n"+respx.getText()+"Y: \n"+ respy.getText();
+        out = out.replace(".", ",");
+        return out;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton11;
@@ -240,6 +268,7 @@ public class EulerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
@@ -253,9 +282,11 @@ public class EulerPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel66;
     private javax.swing.JPanel jPanel67;
     private javax.swing.JPanel jPanel68;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JComboBox jfuncaodiferencial;
-    private javax.swing.JTextArea respostaDiferencialArea;
+    private javax.swing.JTextArea respx;
+    private javax.swing.JTextArea respy;
     private javax.swing.JComboBox tipoDiferencial;
     private javax.swing.JTextField valorheuler;
     private javax.swing.JTextField valory0;

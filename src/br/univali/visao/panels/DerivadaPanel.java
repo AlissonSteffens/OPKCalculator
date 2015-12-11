@@ -240,7 +240,21 @@ public class DerivadaPanel extends javax.swing.JPanel {
         taxaIncremento.setText("2");
     }//GEN-LAST:event_jButton7ActionPerformed
 
-
+    @Override
+    public String toString() {
+        String out  = "";
+        out+= "Equação: "+jfuncaoderivada.getSelectedItem().toString();
+        out+= "\nTipo: "+ tipoDerivada.getSelectedItem().toString();
+        out+= "\nX inicial: "+ valorX.getText();
+        out+= "\nIncremento h: "+ taxaIncremento.getText();
+        out+= "\nErro: 10^-"+ taxaErro.getText();
+        out+= "\nH inicial: "+ hInicial.getText();
+        out+= "\nValores Calculados: \n"+ respostaDerivadaArea.getText();
+        out+= "\nValor Final: "+ campoResposta.getText();
+        out = out.replace(".", ",");
+        return out;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoResposta;
     private javax.swing.JTextField hInicial;

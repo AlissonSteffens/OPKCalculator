@@ -12,6 +12,15 @@ import br.univali.visao.panels.IntegralPanel;
 import br.univali.visao.panels.InterpolacaoPanel;
 import br.univali.visao.panels.MinimosQuadradosPanel;
 import com.alee.laf.WebLookAndFeel;
+import java.awt.Desktop;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -85,7 +94,17 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        String text = jTabbed.getSelectedComponent().toString();
+        File file = new File(""+jTabbed.getTitleAt(jTabbed.getSelectedIndex())+".txt");
+        try {
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "ISO-8859-1"));
+            writer.append(text);
+            writer.close();
+            Runtime.getRuntime().exec("write.exe "+file.getAbsolutePath());
+        } catch (IOException ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     private void erroComentario()

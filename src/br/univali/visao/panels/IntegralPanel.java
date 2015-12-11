@@ -177,8 +177,6 @@ public class IntegralPanel extends javax.swing.JPanel {
         }
         respostaIntegralArea.setText(respostas);
         respostaFinal.setText(resposta.get(resposta.size()-1).toString());
-        
-        System.out.println(this.toString());
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -207,8 +205,9 @@ public class IntegralPanel extends javax.swing.JPanel {
         out+= "\nX inicial: "+ xInicial1.getText();
         out+= "\nX final: "+ xFinal1.getText();
         out+= "\nErro: 10^-"+ taxaErro1.getText();
+        out+= "\nValores Calculados: \n"+ respostaIntegralArea.getText();
         out+= "\nValor Final: "+ respostaFinal.getText();
-        
+        out = out.replace(".", ",");
         return out;
     }
     
