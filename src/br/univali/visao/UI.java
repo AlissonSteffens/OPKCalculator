@@ -95,7 +95,7 @@ public class UI extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         String text = jTabbed.getSelectedComponent().toString();
-        File file = new File(""+jTabbed.getTitleAt(jTabbed.getSelectedIndex())+".txt");
+        File file = new File(System.getProperty("user.home") + "/Desktop/"+jTabbed.getTitleAt(jTabbed.getSelectedIndex())+".rtf");
         try {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "ISO-8859-1"));
             writer.append(text);

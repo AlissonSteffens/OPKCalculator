@@ -59,8 +59,12 @@ public class EulerPanel extends javax.swing.JPanel {
         yInicial = new javax.swing.JLabel();
         valory0 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         respx = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         respy = new javax.swing.JTextArea();
 
@@ -186,19 +190,33 @@ public class EulerPanel extends javax.swing.JPanel {
 
         add(jPanel67, java.awt.BorderLayout.NORTH);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jPanel2.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jLabel1.setText("X");
+        jPanel2.add(jLabel1, java.awt.BorderLayout.NORTH);
 
         respx.setColumns(20);
         respx.setRows(5);
         jScrollPane1.setViewportView(respx);
 
-        jPanel1.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
+        jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.WEST);
+
+        jPanel3.setLayout(new java.awt.BorderLayout(4, 4));
+
+        jLabel2.setText("Y");
+        jPanel3.add(jLabel2, java.awt.BorderLayout.NORTH);
 
         respy.setColumns(20);
         respy.setRows(5);
         jScrollPane8.setViewportView(respy);
 
-        jPanel1.add(jScrollPane8, java.awt.BorderLayout.LINE_END);
+        jPanel3.add(jScrollPane8, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -263,6 +281,8 @@ public class EulerPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
@@ -270,6 +290,8 @@ public class EulerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel59;
