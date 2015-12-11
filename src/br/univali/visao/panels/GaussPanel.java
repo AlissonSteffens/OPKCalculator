@@ -163,7 +163,17 @@ public class GaussPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_vetorSolucaoActionPerformed
 
-
+    @Override
+    public String toString() {
+        String out  = "";
+        out+= "Tamanho Matriz: "+tamanhoMatrizAmpliada.getText();
+        out+= "\nMatriz de Entrada: "+ areaMatriz.getText();
+        out+= "\nEscalonamento: "+ areaMatrizEscalonada.getText();
+        out+= "\nVetor Solução: "+ vetorSolucao.getText();
+        out = out.replace(".", ",");
+        return out;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaMatriz;
     private javax.swing.JTextArea areaMatrizEscalonada;

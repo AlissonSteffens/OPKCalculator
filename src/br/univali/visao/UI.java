@@ -19,6 +19,9 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,7 +38,7 @@ public class UI extends javax.swing.JFrame {
     public UI() {
         initComponents();
         jTabbed.add("Gauss" , new GaussPanel());
-        jTabbed.add("Minimos Quadrados" , new MinimosQuadradosPanel());
+        jTabbed.add("Minimos-Quadrados" , new MinimosQuadradosPanel());
         jTabbed.add("Interpoalação" , new InterpolacaoPanel());
         jTabbed.add("Derivada" , new DerivadaPanel());
         jTabbed.add("Integral" , new IntegralPanel());
@@ -95,13 +98,15 @@ public class UI extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         String text = jTabbed.getSelectedComponent().toString();
-        File file = new File(System.getProperty("user.home") + "/Desktop/"+jTabbed.getTitleAt(jTabbed.getSelectedIndex())+".rtf");
+        
         try {
+            String path = System.getProperty("user.home") + "/Desktop/"+jTabbed.getTitleAt(jTabbed.getSelectedIndex())+".rtf";
+            File file = new File(path);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "ISO-8859-1"));
             writer.append(text);
             writer.close();
             Runtime.getRuntime().exec("write.exe "+file.getAbsolutePath());
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
         }
         

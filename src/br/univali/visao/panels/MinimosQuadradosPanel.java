@@ -244,7 +244,20 @@ public class MinimosQuadradosPanel extends javax.swing.JPanel {
             ynsMMQ.setText("94,8 89,7 81,3 74,9 68,7 64,0 49,3 44,0 39,1 31,6");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    
+    @Override
+    public String toString() {
+        String out  = "";
+        out+= "X: "+xzesMMQ.getText();
+        out+= "\nY: "+ ynsMMQ.getText();
+        out+= "\nTipo: "+ tipoFunacaoAproximacao.getSelectedItem().toString();
+        out+= "\nGrau: "+ grauLabel.getText();
+        out+= "\nSolução: "+ areaMMQ.getText();
+        out+= "\nFunção Aproximada: "+ mMQFuncaoAproximada.getText();
+        out = out.replace(".", ",");
+        return out;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaMMQ;

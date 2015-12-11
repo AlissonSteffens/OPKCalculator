@@ -175,7 +175,18 @@ public class InterpolacaoPanel extends javax.swing.JPanel {
             yonsInterpolacao.setText("-1 0 1 1 -1");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    
+    
+    @Override
+    public String toString() {
+        String out  = "";
+        out+= "X: "+xzesInterpolacao.getText();
+        out+= "\nY: "+ yonsInterpolacao.getText();
+        out+= "\nTipo: "+ tipoFuncaoInterpolacao.getSelectedItem().toString();
+        out+= "\nSolução: "+ areaInterpolacao.getText();
+        out = out.replace(".", ",");
+        return out;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaInterpolacao;
