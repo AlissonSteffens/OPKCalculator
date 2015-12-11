@@ -209,7 +209,6 @@ public class IntegralPanel extends javax.swing.JPanel {
         out+= "\nErro: 10^-"+ taxaErro1.getText();
         out+= "\nValor Final: "+ respostaFinal.getText();
         
-        
         return out;
     }
     
